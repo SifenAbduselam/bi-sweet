@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import bookingRoutes from "./routes/bookingRoutes.js";
-
+import authRoutes from "./routes/authRoutes.js";
+import bookingRoutes from "./routes/bookingRoutes.js";
 const app = express();
 
 app.use(cors());
