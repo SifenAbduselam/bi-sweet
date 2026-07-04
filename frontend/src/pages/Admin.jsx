@@ -12,5 +12,18 @@ export default function Admin() {
     }
   }, []);
 
-  return <h1>Admin Dashboard</h1>;
+  function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  }
+
+  return (
+    <div>
+      <h1>Admin Dashboard</h1>
+
+      <button onClick={logout}>
+        Logout
+      </button>
+    </div>
+  );
 }
