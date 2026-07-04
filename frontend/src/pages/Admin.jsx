@@ -27,10 +27,12 @@ export default function Admin() {
     fetchBookings();
   }
 
-  async function deleteBooking(id) {
-    await fetch(`http://localhost:3000/api/bookings/${id}`, {
-      method: "DELETE",
-    });
+ await fetch(`http://localhost:3000/api/bookings/${id}`, {
+  method: "DELETE",
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 
     fetchBookings();
   }
