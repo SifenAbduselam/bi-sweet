@@ -26,8 +26,7 @@ Time: ${time}
   res.json({ success: true });
 });
 
-router.delete("/bookings/:id", verifyAdmin, ...)
-router.patch("/bookings/:id", verifyAdmin, ...)
+
 // GET bookings
 
 router.get("/bookings", async (req, res) => {
@@ -39,7 +38,7 @@ router.get("/bookings", async (req, res) => {
 });
 
 // UPDATE status
-router.patch("/bookings/:id", async (req, res) => {
+router.patch("/bookings/:id", verifyAdmin, async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
 
@@ -54,7 +53,7 @@ router.patch("/bookings/:id", async (req, res) => {
 });
 
 // DELETE booking
-router.delete("/bookings/:id", async (req, res) => {
+router.delete("/bookings/:id", verifyAdmin,  async (req, res) => {
   const { id } = req.params;
 
   const { error } = await supabase
