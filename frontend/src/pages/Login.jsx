@@ -18,9 +18,7 @@ export default function Login() {
 
     if (data.token) {
       localStorage.setItem("token", data.token);
-
-      // 🔥 IMPORTANT: redirect
-      navigate("/admin");
+      navigate("/admin"); // 🔥 important
     } else {
       alert("Invalid credentials");
     }
@@ -28,8 +26,8 @@ export default function Login() {
 
   return (
     <div>
-      <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
-      <input placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+      <input onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+      <input onChange={(e) => setPassword(e.target.value)} placeholder="password" />
       <button onClick={handleLogin}>Login</button>
     </div>
   );
