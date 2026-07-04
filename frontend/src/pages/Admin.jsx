@@ -8,13 +8,13 @@ export default function Admin() {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      navigate("/login");
+      navigate("/admin/login");
     }
   }, []);
 
   function logout() {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    window.location.href = "/admin/login";
   }
 
   return (
