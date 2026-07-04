@@ -26,7 +26,10 @@ Time: ${time}
   res.json({ success: true });
 });
 
+router.delete("/bookings/:id", verifyAdmin, ...)
+router.patch("/bookings/:id", verifyAdmin, ...)
 // GET bookings
+
 router.get("/bookings", async (req, res) => {
   const { data, error } = await supabase.from("bookings").select("*");
 
