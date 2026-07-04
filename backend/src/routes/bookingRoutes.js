@@ -2,6 +2,7 @@ import express from "express";
 import { supabase } from "../lib/supabase.js";
 import { sendTelegramMessage } from "../services/telegramService.js";
 const router = express.Router();
+import { verifyAdmin } from "../middleware/authMiddleware.js";
 
 // CREATE booking
 router.post("/bookings", async (req, res) => {
