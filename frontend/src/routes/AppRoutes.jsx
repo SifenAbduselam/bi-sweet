@@ -9,8 +9,7 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/booking" element={<Booking />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/admin" element={<Admin />} />
+<Route path="/admin/login" element={<Login />} />      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }
