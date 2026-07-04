@@ -9,7 +9,6 @@ export default function Navbar() {
       <div style={styles.links}>
         <Link to="/" style={styles.link}>Home</Link>
         <Link to="/booking" style={styles.link}>Booking</Link>
-        <Link to="/admin" style={styles.link}>Admin</Link>
       </div>
     </nav>
     </>
