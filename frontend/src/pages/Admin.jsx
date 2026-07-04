@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function Admin() {
   const [bookings, setBookings] = useState([]);
+  const token = localStorage.getItem("token");
 
   async function fetchBookings() {
     const res = await fetch("http://localhost:3000/api/bookings");
