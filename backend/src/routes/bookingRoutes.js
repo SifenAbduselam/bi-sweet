@@ -29,7 +29,7 @@ Time: ${time}
 
 // GET bookings
 
-router.get("/bookings", async (req, res) => {
+router.get("/bookings",verifyAdmin, async (req, res) => {
   const { data, error } = await supabase.from("bookings").select("*");
 
   if (error) return res.status(500).json({ error });
