@@ -5,25 +5,49 @@ import { api } from "../api/api";
 
 export default function Admin() {
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Check if logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
+    
+    // Check if logged in
     if (!token) {
       navigate("/admin/login");
-    } else {
-      fetchBookings();
+      return;
     }
+    
+    fetchBookings();
   }, [navigate]);
 
   async function fetchBookings() {
     try {
+      setLoading(true);
+      setError(null);
+      
       const data = await api.getBookings();
-      setBookings(data);
+      
+      // Check if data is actually an array
+      if (Array.isArray(data)) {
+        setBookings(data);
+      } else if (data && data.error) {
+        // Backend returned an error
+        setError(data.error);
+        if (data.error.includes("Unauthorized") || data.error.includes("token")) {
+          localStorage.removeItem("token");
+          navigate("/admin/login");
+        }
+      } else {
+        // Unexpected response format
+        console.error("Unexpected response:", data);
+        setError("Failed to load bookings. Please try again.");
+      }
     } catch (error) {
       console.error("Error fetching bookings:", error);
-      alert("Failed to load bookings");
+      setError("Failed to connect to server. Make sure backend is running.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -52,6 +76,37 @@ export default function Admin() {
   function logout() {
     localStorage.removeItem("token");
     navigate("/admin/login");
+  }
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-5xl mb-4 animate-spin">🍰</div>
+          <p className="text-gray-600 text-lg">Loading bookings...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+        <div className="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full text-center">
+          <div className="text-5xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Error</h2>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <button
+            onClick={() => navigate("/admin/login")}
+            className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            Go to Login
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (

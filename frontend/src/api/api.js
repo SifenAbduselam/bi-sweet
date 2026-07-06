@@ -1,48 +1,81 @@
-const BASE_URL = "http://localhost:3000/api";
+// src/api/api.js
+const API_URL = "http://localhost:3000/api";
 
-// helper to get token
-function getToken() {
-  return localStorage.getItem("token");
-}
-
-// generic request function
-async function request(endpoint, options = {}) {
-  const res = await fetch(BASE_URL + endpoint, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: getToken() ? `Bearer ${getToken()}` : "",
-      ...options.headers,
-    },
-  });
-
-  return res.json();
-}
-
-// API functions
 export const api = {
-  login: (data) =>
-    request("/auth/login", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }),
+  async getBookings() {
+    const token = localStorage.getItem("token");
+    
+    if (!token) {
+      throw new Error("No token found");
+    }
 
-  getBookings: () => request("/bookings"),
+    try {
+      const res = await fetch(`${API_URL}/bookings`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
 
-  createBooking: (data) =>
-    request("/bookings", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }),
+      // Check if response is OK
+      if (!res.ok) {
+        const errorData = await res.json();
+        return errorData; // Return the error object
+      }
 
-  updateBooking: (id, status) =>
-    request(`/bookings/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ status }),
-    }),
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      return { error: "Failed to connect to server" };
+    }
+  },
 
-  deleteBooking: (id) =>
-    request(`/bookings/${id}`, {
-      method: "DELETE",
-    }),
-};
+  async updateBooking(id, status) {
+    const token = localStorage.getItem("token");
+    
+    try {
+      const res = await fetch(`${API_URL}/bookings/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ status })
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to update");
+      }
+
+      return await res.json();
+    } catch (error) {
+      console.error("Update Error:", error);
+      throw error;
+    }
+  },
+
+  async deleteBooking(id) {
+    const token = localStorage.getItem("token");
+    
+    try {
+      const res = await fetch(`${API_URL}/bookings/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to delete");
+      }
+
+      return await res.json();
+    } catch (error) {
+      console.error("Delete Error:", error);
+      throw error;
+    }
+  }
+}; 

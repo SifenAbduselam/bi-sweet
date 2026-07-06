@@ -8,6 +8,7 @@ export default function Booking() {
     date: "",
     time: "",
   });
+  const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
     setForm({
@@ -18,26 +19,44 @@ export default function Booking() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
-    const response = await fetch("http://localhost:3000/api/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+    console.log("Submitting booking:", form); // Debug log
 
-    const data = await response.json();
-
-    if (data.success) {
-      alert("Booking sent to backend!");
-
-      setForm({
-        name: "",
-        service: "",
-        date: "",
-        time: "",
+    try {
+      const response = await fetch("http://localhost:3000/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
       });
+
+      console.log("Response status:", response.status); // Debug log
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Response data:", data); // Debug log
+
+      if (data.success) {
+        alert("Booking sent to backend!");
+        setForm({
+          name: "",
+          service: "",
+          date: "",
+          time: "",
+        });
+      } else {
+        alert("Booking failed: " + (data.message || "Unknown error"));
+      }
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert("Failed to submit booking. Check console for details.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -63,7 +82,6 @@ export default function Booking() {
         <div className="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-5">
             
-            {/* Name Input */}
             <div>
               <label className="block text-gray-700 font-semibold mb-2 text-sm">
                 Your Name
@@ -78,7 +96,6 @@ export default function Booking() {
               />
             </div>
 
-            {/* Service Select */}
             <div>
               <label className="block text-gray-700 font-semibold mb-2 text-sm">
                 Select Dessert
@@ -100,7 +117,6 @@ export default function Booking() {
               </select>
             </div>
 
-            {/* Date and Time - Side by Side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <label className="block text-gray-700 font-semibold mb-2 text-sm">
@@ -131,12 +147,12 @@ export default function Booking() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-pink-500 hover:bg-pink-600 text-white py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-md hover:shadow-lg mt-4"
+              disabled={loading}
+              className="w-full bg-pink-500 hover:bg-pink-600 text-white py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-md hover:shadow-lg mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Confirm Booking 🍰
+              {loading ? "Submitting..." : "Confirm Booking 🍰"}
             </button>
           </form>
         </div>
