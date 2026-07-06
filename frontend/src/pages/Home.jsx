@@ -34,13 +34,13 @@ export default function Home() {
             to="/booking"
             className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:scale-105 shadow-lg"
           >
-            Order Now 🧁
+            Order Now 🍰
           </Link>
           <a 
-            href="#menu"
+            href="#products"
             className="bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all"
           >
-            View Menu
+            View Products
           </a>
         </div>
       </div>
