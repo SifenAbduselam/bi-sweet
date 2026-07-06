@@ -1,9 +1,27 @@
 // src/components/Navbar.jsx
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  // Helper function to handle section navigation
+  const handleSectionClick = (sectionId) => {
+    setIsOpen(false); // Close mobile menu
+    
+    if (isHome) {
+      // If already on home page, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If on another page, navigate to home first
+      window.location.href = `/#${sectionId}`;
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
@@ -21,18 +39,30 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
+            <button 
+              onClick={() => handleSectionClick("home")}
+              className="text-gray-700 hover:text-pink-500 font-medium transition-colors"
+            >
               Home
-            </a>
-            <a href="#products" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
+            </button>
+            <button 
+              onClick={() => handleSectionClick("products")}
+              className="text-gray-700 hover:text-pink-500 font-medium transition-colors"
+            >
               Products
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
+            </button>
+            <button 
+              onClick={() => handleSectionClick("about")}
+              className="text-gray-700 hover:text-pink-500 font-medium transition-colors"
+            >
               About
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
+            </button>
+            <button 
+              onClick={() => handleSectionClick("contact")}
+              className="text-gray-700 hover:text-pink-500 font-medium transition-colors"
+            >
               Contact
-            </a>
+            </button>
           </nav>
 
           {/* Order Button */}
@@ -55,11 +85,35 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden pb-4 space-y-3">
-            <a href="#home" className="block text-gray-700 hover:text-pink-500 font-medium">Home</a>
-            <a href="#products" className="block text-gray-700 hover:text-pink-500 font-medium">Products</a>
-            <a href="#about" className="block text-gray-700 hover:text-pink-500 font-medium">About</a>
-            <a href="#contact" className="block text-gray-700 hover:text-pink-500 font-medium">Contact</a>
-            <Link to="/booking" className="block bg-pink-500 text-white text-center px-6 py-2.5 rounded-full font-semibold">
+            <button 
+              onClick={() => handleSectionClick("home")}
+              className="block w-full text-left text-gray-700 hover:text-pink-500 font-medium"
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => handleSectionClick("products")}
+              className="block w-full text-left text-gray-700 hover:text-pink-500 font-medium"
+            >
+              Products
+            </button>
+            <button 
+              onClick={() => handleSectionClick("about")}
+              className="block w-full text-left text-gray-700 hover:text-pink-500 font-medium"
+            >
+              About
+            </button>
+            <button 
+              onClick={() => handleSectionClick("contact")}
+              className="block w-full text-left text-gray-700 hover:text-pink-500 font-medium"
+            >
+              Contact
+            </button>
+            <Link 
+              to="/booking" 
+              className="block bg-pink-500 text-white text-center px-6 py-2.5 rounded-full font-semibold"
+              onClick={() => setIsOpen(false)}
+            >
               Order Now
             </Link>
           </div>
