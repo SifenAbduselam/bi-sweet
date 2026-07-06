@@ -1,7 +1,6 @@
 // src/pages/Home.jsx
 import { Link } from "react-router-dom";
 import { businessPresets } from "../data/businessPresets";
-import heroBg from "../assets/hero-bg.jpg";
 
 export default function Home() {
   const data = businessPresets.bakery;
@@ -9,15 +8,11 @@ export default function Home() {
   return (
     <section 
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${heroBg})` }}
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-400 via-pink-500 to-pink-600"
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-pink-900/40 to-pink-950/60" />
-
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto pt-20">
-        <p className="text-pink-200 text-lg md:text-xl font-light mb-4 tracking-wider uppercase">
+        <p className="text-pink-100 text-lg md:text-xl font-light mb-4 tracking-wider uppercase">
           {data.heroSubtitle}
         </p>
         
@@ -25,20 +20,20 @@ export default function Home() {
           {data.heroTitle}
         </h1>
         
-        <p className="text-lg md:text-xl text-gray-100 mb-10 max-w-xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-white/90 mb-10 max-w-xl mx-auto leading-relaxed">
           {data.heroText}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
             to="/booking"
-            className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:scale-105 shadow-lg"
+            className="bg-white hover:bg-gray-100 text-pink-600 px-8 py-4 rounded-full font-semibold text-lg transition-all hover:scale-105 shadow-lg"
           >
             Order Now 🍰
           </Link>
           <a 
             href="#products"
-            className="bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all"
+            className="bg-pink-700/30 backdrop-blur-sm border-2 border-white/50 hover:bg-pink-700/50 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all"
           >
             View Products
           </a>
