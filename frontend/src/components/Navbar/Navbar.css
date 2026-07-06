@@ -1,0 +1,77 @@
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 7%;
+
+    background:rgba(255,248,245,.85);
+
+    backdrop-filter:blur(15px);
+
+    z-index:1000;
+
+    transition:.35s;
+}
+
+.logo{
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+.logo span{
+
+    display:block;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    color:#C9A27E;
+}
+
+.logo h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:34px;
+
+    color:#7A4E3A;
+
+    letter-spacing:2px;
+}
+
+nav{
+
+    display:flex;
+
+    gap:40px;
+}
+
+nav a{
+
+    position:relative;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    color:#6D5245;
+
+    transition:.3s;
+}
