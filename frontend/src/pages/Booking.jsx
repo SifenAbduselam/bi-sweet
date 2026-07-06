@@ -1,3 +1,4 @@
+// src/pages/Booking.jsx
 import { useState } from "react";
 
 export default function Booking() {
@@ -15,105 +16,138 @@ export default function Booking() {
     });
   }
 
-async function handleSubmit(e) {
-  e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  const response = await fetch("http://localhost:3000/api/bookings", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form),
-  });
-
-  const data = await response.json();
-
-  if (data.success) {
-    alert("Booking sent to backend!");
-
-    setForm({
-      name: "",
-      service: "",
-      date: "",
-      time: "",
+    const response = await fetch("http://localhost:3000/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
     });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert("Booking sent to backend!");
+
+      setForm({
+        name: "",
+        service: "",
+        date: "",
+        time: "",
+      });
+    }
   }
-}
 
   return (
-    <div style={styles.container}>
-      <h1>Book a Service</h1>
+    <div className="min-h-screen bg-pink-50 pt-28 pb-16 px-4">
+      <div className="max-w-2xl mx-auto">
+        
+        {/* Header */}
+        <div className="text-center mb-10">
+          <p className="text-pink-500 font-semibold uppercase tracking-wider mb-2">
+            Place Your Order
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Book a Dessert
+          </h1>
+          <div className="w-20 h-1 bg-pink-500 mx-auto rounded-full mb-4" />
+          <p className="text-gray-600">
+            Fill out the form below and we'll prepare your order with love! 🍰
+          </p>
+        </div>
 
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <input
-          name="name"
-          placeholder="Your name"
-          value={form.name}
-          onChange={handleChange}
-          style={styles.input}
-          required
-        />
+        {/* Form Card */}
+        <div className="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            
+            {/* Name Input */}
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                Your Name
+              </label>
+              <input
+                name="name"
+                placeholder="Enter your full name"
+                value={form.name}
+                onChange={handleChange}
+                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all"
+                required
+              />
+            </div>
 
-        <select
-          name="service"
-          value={form.service}
-          onChange={handleChange}
-          style={styles.input}
-          required
-        >
-          <option value="">Select service</option>
-          <option value="Photography">Photography</option>
-          <option value="Bakery">Bakery</option>
-          <option value="Clinic">Clinic</option>
-          <option value="Hotel">Hotel</option>
-        </select>
+            {/* Service Select */}
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                Select Dessert
+              </label>
+              <select
+                name="service"
+                value={form.service}
+                onChange={handleChange}
+                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all bg-white"
+                required
+              >
+                <option value="">Choose a dessert</option>
+                <option value="Tiramisu Tray">Tiramisu Tray</option>
+                <option value="Strawberry Tres Leches">Strawberry Tres Leches</option>
+                <option value="Lotus Biscoff Pudding">Lotus Biscoff Pudding</option>
+                <option value="Chocolate Lava Cake">Chocolate Lava Cake</option>
+                <option value="Mango Cheesecake">Mango Cheesecake</option>
+                <option value="Mixed Dessert Box">Mixed Dessert Box</option>
+              </select>
+            </div>
 
-        <input
-          type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-          style={styles.input}
-          required
-        />
+            {/* Date and Time - Side by Side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                  Pickup Date
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  value={form.date}
+                  onChange={handleChange}
+                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all"
+                  required
+                />
+              </div>
 
-        <input
-          type="time"
-          name="time"
-          value={form.time}
-          onChange={handleChange}
-          style={styles.input}
-          required
-        />
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                  Pickup Time
+                </label>
+                <input
+                  type="time"
+                  name="time"
+                  value={form.time}
+                  onChange={handleChange}
+                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all"
+                  required
+                />
+              </div>
+            </div>
 
-        <button type="submit" style={styles.button}>
-          Confirm Booking
-        </button>
-      </form>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-pink-500 hover:bg-pink-600 text-white py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-md hover:shadow-lg mt-4"
+            >
+              Confirm Booking 🍰
+            </button>
+          </form>
+        </div>
+
+        {/* Info Note */}
+        <div className="mt-8 text-center">
+          <p className="text-gray-500 text-sm">
+            📞 Need help? Call us at <span className="font-semibold text-pink-500">+1 (555) 123-4567</span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    padding: "40px",
-    maxWidth: "500px",
-    margin: "0 auto",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "12px",
-  },
-  input: {
-    padding: "10px",
-    fontSize: "16px",
-  },
-  button: {
-    padding: "12px",
-    backgroundColor: "black",
-    color: "white",
-    border: "none",
-    cursor: "pointer",
-  },
-};
