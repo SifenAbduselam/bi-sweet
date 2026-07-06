@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Products from "./components/Products";
@@ -20,13 +20,13 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* Keep your existing /booking route */}
+        {/* Keep your existing /booking route here if you have one */}
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </>
   );
 }
