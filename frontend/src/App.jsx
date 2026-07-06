@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Products from "./components/Products";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Booking from "./pages/Booking";
 import Footer from "./components/Footer";
 
 function HomePage() {
@@ -24,7 +25,9 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+         <Route path="/booking" element={<Booking />}/>
         {/* Keep your existing /booking route here if you have one */}
+        
       </Routes>
       <Footer />
     </>
