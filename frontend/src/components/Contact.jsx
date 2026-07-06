@@ -1,5 +1,5 @@
 // src/components/Contact.jsx
-import { businessPresets } from "../data/businessPreset";
+import { businessPresets } from "../data/businessPresets";
 
 export default function Contact() {
   const { contact } = businessPresets.bakery;
