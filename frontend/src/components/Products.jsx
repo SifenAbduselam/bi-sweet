@@ -1,5 +1,5 @@
 // src/components/Products.jsx
-import { businessPresets } from "../data/businessPreset";
+import { businessPresets } from "../data/businessPresets";
 
 export default function Products() {
   const { products } = businessPresets.bakery;

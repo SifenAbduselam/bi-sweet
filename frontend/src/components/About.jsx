@@ -1,5 +1,5 @@
 // src/components/About.jsx
-import { businessPresets } from "../data/businessPreset";
+import { businessPresets } from "../data/businessPresets";
 
 export default function About() {
   const { about } = businessPresets.bakery;

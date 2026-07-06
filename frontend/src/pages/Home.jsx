@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
 import { Link } from "react-router-dom";
-import { businessPresets } from "../data/businessPreset";
+import { businessPresets } from "../data/businessPresets";
 import heroBg from "../assets/hero-bg.jpg";
 
 export default function Home() {
