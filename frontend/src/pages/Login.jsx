@@ -7,14 +7,16 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleLogin() {
     if (!email || !password) {
-      alert("Please fill in all fields");
+      setError("Please fill in all fields");
       return;
     }
 
     setLoading(true);
+    setError("");
 
     try {
       const res = await fetch("http://localhost:3000/api/auth/login", {
@@ -29,11 +31,11 @@ export default function Login() {
         localStorage.setItem("token", data.token);
         navigate("/admin");
       } else {
-        alert("Invalid credentials");
+        setError(data.error || "Invalid credentials");
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("Failed to connect to server");
+      setError("Failed to connect to server. Make sure backend is running.");
     } finally {
       setLoading(false);
     }
@@ -49,6 +51,13 @@ export default function Login() {
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Admin Login</h1>
           <p className="text-gray-600 text-sm">Bi-Sweet Deserts Dashboard</p>
         </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-4 text-sm">
+            {error}
+          </div>
+        )}
 
         {/* Form */}
         <div className="space-y-5">
