@@ -11,11 +11,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1">
-            <span className="text-3xl">🧁</span>
+          <Link to="/" className="flex items-center gap-2">
+            <span className="text-3xl">🍰</span>
             <div>
-              <span className="text-pink-500 font-bold text-xl">Sweet's</span>
-              <h2 className="text-pink-600 font-bold text-xl -mt-1">Cupcake</h2>
+              <span className="text-pink-500 font-bold text-xl">Bi-Sweet</span>
+              <h2 className="text-pink-600 font-bold text-xl -mt-1">Deserts</h2>
             </div>
           </Link>
 
@@ -24,11 +24,8 @@ export default function Navbar() {
             <a href="#home" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
               Home
             </a>
-            <a href="#menu" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
-              Menu
-            </a>
-            <a href="#gallery" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
-              Gallery
+            <a href="#products" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
+              Products
             </a>
             <a href="#about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">
               About
@@ -59,8 +56,7 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden pb-4 space-y-3">
             <a href="#home" className="block text-gray-700 hover:text-pink-500 font-medium">Home</a>
-            <a href="#menu" className="block text-gray-700 hover:text-pink-500 font-medium">Menu</a>
-            <a href="#gallery" className="block text-gray-700 hover:text-pink-500 font-medium">Gallery</a>
+            <a href="#products" className="block text-gray-700 hover:text-pink-500 font-medium">Products</a>
             <a href="#about" className="block text-gray-700 hover:text-pink-500 font-medium">About</a>
             <a href="#contact" className="block text-gray-700 hover:text-pink-500 font-medium">Contact</a>
             <Link to="/booking" className="block bg-pink-500 text-white text-center px-6 py-2.5 rounded-full font-semibold">
