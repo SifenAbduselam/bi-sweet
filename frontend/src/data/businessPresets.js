@@ -2,81 +2,70 @@
 
 export const businessPresets = {
   bakery: {
-    name: "Sweet's Cupcake",
-    type: "Homemade Cupcakes & Desserts",
-    heroTitle: "Sweet's Cupcake",
-    heroSubtitle: "Freshly Baked Happiness",
-    heroText: "Handcrafted cupcakes made with love, premium ingredients, and a whole lot of sprinkles.",
+    name: "Bi-Sweet Deserts",
+    type: "Homemade Desserts",
+    heroTitle: "Bi-Sweet Deserts",
+    heroSubtitle: "Homemade with Love",
+    heroText: "Premium, artisanal homemade desserts crafted with love and the finest ingredients.",
     
-    // Services/Menu Items
-    services: [
+    // Products
+    products: [
       { 
-        name: "Classic Vanilla Cupcake", 
-        price: "$3.50", 
-        description: "Fluffy vanilla sponge with buttercream frosting",
-        image: "/images/vanilla-cupcake.jpg"
-      },
-      { 
-        name: "Chocolate Dream", 
-        price: "$4.00", 
-        description: "Rich chocolate cake with ganache topping",
-        image: "/images/chocolate-cupcake.jpg"
-      },
-      { 
-        name: "Strawberry Bliss", 
-        price: "$4.50", 
-        description: "Fresh strawberry frosting with real fruit pieces",
-        image: "/images/strawberry-cupcake.jpg"
-      },
-      { 
-        name: "Red Velvet Special", 
-        price: "$4.50", 
-        description: "Classic red velvet with cream cheese frosting",
-        image: "/images/redvelvet-cupcake.jpg"
-      },
-      { 
-        name: "Lotus Biscoff", 
-        price: "$5.00", 
-        description: "Caramel biscoff spread with cookie crumble",
-        image: "/images/lotus-cupcake.jpg"
-      },
-      { 
+        id: 1,
         name: "Tiramisu Tray", 
         price: "From $25", 
-        description: "Coffee-soaked cupcakes with mascarpone cream",
-        image: "/images/tiramisu-tray.jpg"
+        description: "Classic Italian coffee-flavored dessert",
+        category: "Trays"
       },
-    ],
-
-    // Gallery Images
-    gallery: [
-      { id: 1, src: "/images/gallery-1.jpg", alt: "Cupcake display" },
-      { id: 2, src: "/images/gallery-2.jpg", alt: "Baking process" },
-      { id: 3, src: "/images/gallery-3.jpg", alt: "Custom order" },
-      { id: 4, src: "/images/gallery-4.jpg", alt: "Party setup" },
-      { id: 5, src: "/images/gallery-5.jpg", alt: "Seasonal special" },
-      { id: 6, src: "/images/gallery-6.jpg", alt: "Gift boxes" },
+      { 
+        id: 2,
+        name: "Strawberry Tres Leches", 
+        price: "From $28", 
+        description: "Moist sponge cake soaked in three milks with fresh strawberries",
+        category: "Cakes"
+      },
+      { 
+        id: 3,
+        name: "Lotus Biscoff Pudding", 
+        price: "From $22", 
+        description: "Creamy pudding topped with caramelized biscoff cookies",
+        category: "Puddings"
+      },
+      { 
+        id: 4,
+        name: "Chocolate Lava Cake", 
+        price: "From $24", 
+        description: "Rich chocolate cake with molten center",
+        category: "Cakes"
+      },
+      { 
+        id: 5,
+        name: "Mango Cheesecake", 
+        price: "From $30", 
+        description: "Creamy cheesecake with tropical mango topping",
+        category: "Cheesecakes"
+      },
+      { 
+        id: 6,
+        name: "Mixed Dessert Box", 
+        price: "From $35", 
+        description: "Assorted mini desserts perfect for sharing",
+        category: "Boxes"
+      },
     ],
 
     // Contact Info
     contact: {
       phone: "+1 (555) 123-4567",
-      email: "hello@sweetscupcake.com",
+      email: "hello@bisweetdeserts.com",
       address: "123 Baker Street, Sweet Town",
-      hours: "Mon-Sat: 8AM - 7PM",
-      instagram: "@sweetscupcake",
+      hours: "Mon-Sat: 9AM - 6PM",
     },
 
-    // About Section
+    // About
     about: {
-      title: "Our Sweet Story",
-      text: "We started baking from our home kitchen with a simple mission: bring joy through delicious cupcakes. Every cupcake is baked fresh daily using premium ingredients and recipes passed down through generations.",
-      stats: [
-        { number: "500+", label: "Happy Customers" },
-        { number: "50+", label: "Cupcake Varieties" },
-        { number: "5", label: "Years of Baking" },
-      ]
+      title: "Our Story",
+      text: "Bi-Sweet Deserts started as a small home kitchen passion project. Today, we continue to create handcrafted desserts using traditional recipes and premium ingredients. Every dessert is made fresh to order with love.",
     }
   },
-  // Keep other presets intact for backend compatibility
 };
