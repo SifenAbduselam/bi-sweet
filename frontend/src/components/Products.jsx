@@ -1,6 +1,21 @@
 // src/components/Products.jsx
 import { businessPresets } from "../data/businessPresets";
 import heroBg from "../assets/hero-bg.jpg";
+import whiteCoconut from "../assets/white-coconut.jpg";
+import blackStrawberry from "../assets/black-strawberry.jpg";
+import kinderBiscoff from "../assets/kinder-biscoff.jpg";
+import oreo from "../assets/oreo.jpg";
+import whiteStrawberry from "../assets/white-strawberry.jpg";
+import lotusBiscoff from "../assets/lotus-biscoff.jpg";
+
+const productImages = {
+  "White Coconut": whiteCoconut,
+  "Black Strawberry": blackStrawberry,
+  "Kinder Biscoff": kinderBiscoff,
+  "Oreo": oreo,
+  "White Strawberry": whiteStrawberry,
+  "Lotus Biscoff": lotusBiscoff,
+};
 
 export default function Products() {
   const { products } = businessPresets.bakery;
@@ -8,16 +23,16 @@ export default function Products() {
   return (
     <section 
       id="products" 
-      className="relative py-20 bg-cover bg-center bg-fixed"
+      className="relative py-24 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
-      {/* Light Pink Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-pink-50/95 via-white/90 to-pink-50/95" />
+      {/* Almost Transparent Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-down">
+        <div className="text-center mb-20 animate-fade-in-down">
           <p className="text-pink-600 font-semibold uppercase tracking-widest mb-3 text-sm">
             Our Menu
           </p>
@@ -30,60 +45,75 @@ export default function Products() {
           </p>
         </div>
 
-        {/* Products Grid - 4 columns on large screens */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <div 
-              key={product.id}
-              className="group relative animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Floating Card with Glassmorphism */}
-              <div className="relative bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-white/50">
-                
-                {/* Category Badge */}
-                <div className="absolute -top-3 left-6">
-                  <span className="inline-block bg-pink-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-md">
-                    {product.category}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="pt-4">
-                  {/* Product Name */}
-                  <h3 className="text-xl font-serif font-bold text-gray-900 mb-2 leading-tight group-hover:text-pink-600 transition-colors">
-                    {product.name}
-                  </h3>
-
-                  {/* Price - Prominent */}
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="text-3xl font-bold text-pink-600">
-                      {product.price}
-                    </span>
+        {/* Products Grid - 2 columns, 3 rows */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {products.slice(0, 6).map((product, index) => {
+            const productImage = productImages[product.name] || heroBg;
+            
+            return (
+              <div 
+                key={product.id}
+                className="group relative animate-slide-up"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                {/* Elegant Floating Card */}
+                <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-4 border border-white/60">
+                  
+                  {/* Product Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={productImage} 
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Gradient Overlay on Image */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-block bg-white/95 backdrop-blur-sm text-pink-600 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg">
+                        {product.category}
+                      </span>
+                    </div>
+                    
+                    {/* Price Badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="inline-block bg-pink-500 text-white text-lg font-bold px-4 py-2 rounded-full shadow-lg">
+                        {product.price}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm leading-relaxed mb-5">
-                    {product.description}
-                  </p>
+                  {/* Content */}
+                  <div className="p-8">
+                    {/* Product Name */}
+                    <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
+                      {product.name}
+                    </h3>
 
-                  {/* Order Button */}
-                  <button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-3 rounded-full font-semibold text-sm transition-all hover:shadow-lg hover:scale-105 uppercase tracking-wide">
-                    Add to Order
-                  </button>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                      {product.description}
+                    </p>
+
+                    {/* Order Button */}
+                    <button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-4 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:scale-[1.02] uppercase tracking-wider">
+                      Add to Order →
+                    </button>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/40 to-transparent rounded-tr-3xl rounded-bl-full pointer-events-none"></div>
                 </div>
-
-                {/* Decorative Corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-pink-200/30 to-transparent rounded-tr-2xl rounded-bl-full pointer-events-none"></div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 animate-fade-in-up">
+        <div className="text-center mt-20 animate-fade-in-up">
           <p className="text-gray-700 text-lg mb-6">
-            Can't decide? Try our mixed dessert box!
+            Want something special? We create custom desserts!
           </p>
           <a 
             href="#contact"

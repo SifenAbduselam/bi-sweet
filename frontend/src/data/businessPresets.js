@@ -11,59 +11,45 @@ export const businessPresets = {
     products: [
       { 
         id: 1,
-        name: "Tiramisu Tray", 
-        price: "$25", 
-        description: "Classic Italian coffee-flavored dessert with cocoa",
-        category: "Trays"
+        name: "White Coconut", 
+        price: "$22", 
+        description: "Creamy coconut dessert topped with shredded coconut flakes",
+        category: "Classic"
       },
       { 
         id: 2,
-        name: "Strawberry Tres Leches", 
+        name: "Black Strawberry", 
         price: "$28", 
-        description: "Moist sponge cake soaked in three milks with fresh strawberries",
-        category: "Cakes"
+        description: "Rich chocolate base with fresh strawberries and cream",
+        category: "Premium"
       },
       { 
         id: 3,
-        name: "Lotus Biscoff Pudding", 
-        price: "$22", 
-        description: "Creamy pudding topped with caramelized biscoff cookies",
-        category: "Puddings"
+        name: "Kinder Biscoff", 
+        price: "$25", 
+        description: "Lotus biscoff cookies layered with creamy custard",
+        category: "Signature"
       },
       { 
         id: 4,
-        name: "Chocolate Lava Cake", 
+        name: "Oreo", 
         price: "$24", 
-        description: "Rich chocolate cake with molten center",
-        category: "Cakes"
+        description: "Classic Oreo cookies with caramel drizzle and cream",
+        category: "Classic"
       },
       { 
         id: 5,
-        name: "Mango Cheesecake", 
-        price: "$30", 
-        description: "Creamy cheesecake with tropical mango topping",
-        category: "Cheesecakes"
+        name: "White Strawberry", 
+        price: "$28", 
+        description: "Delicate white cream with fresh strawberry layers",
+        category: "Premium"
       },
       { 
         id: 6,
-        name: "Mixed Dessert Box", 
-        price: "$35", 
-        description: "Assorted mini desserts perfect for sharing",
-        category: "Boxes"
-      },
-      { 
-        id: 7,
-        name: "Vanilla Bean Panna Cotta", 
-        price: "$18", 
-        description: "Silky Italian custard with vanilla bean",
-        category: "Puddings"
-      },
-      { 
-        id: 8,
-        name: "Red Velvet Delight", 
-        price: "$26", 
-        description: "Classic red velvet with cream cheese frosting",
-        category: "Cakes"
+        name: "Lotus Biscoff", 
+        price: "$25", 
+        description: "Crushed biscoff cookies with caramel and cream layers",
+        category: "Signature"
       },
     ],
 
