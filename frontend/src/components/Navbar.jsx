@@ -8,7 +8,6 @@ export default function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  // Detect scroll to add background
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -33,7 +32,7 @@ export default function Navbar() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-white/95 backdrop-blur-md shadow-sm" 
+          ? "bg-white/90 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
       }`}
     >
@@ -43,7 +42,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <span className={`text-2xl font-serif font-bold transition-colors ${
-              scrolled ? 'text-gray-800' : 'text-white'
+              scrolled ? 'text-gray-800' : 'text-pink-600'
             }`}>
               Bi-Sweet
             </span>
@@ -56,7 +55,7 @@ export default function Navbar() {
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
                   ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-white/90 hover:text-white'
+                  : 'text-pink-700 hover:text-pink-500'
               }`}
             >
               Home
@@ -66,7 +65,7 @@ export default function Navbar() {
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
                   ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-white/90 hover:text-white'
+                  : 'text-pink-700 hover:text-pink-500'
               }`}
             >
               Products
@@ -76,7 +75,7 @@ export default function Navbar() {
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
                   ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-white/90 hover:text-white'
+                  : 'text-pink-700 hover:text-pink-500'
               }`}
             >
               About
@@ -86,7 +85,7 @@ export default function Navbar() {
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
                   ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-white/90 hover:text-white'
+                  : 'text-pink-700 hover:text-pink-500'
               }`}
             >
               Contact
@@ -99,7 +98,7 @@ export default function Navbar() {
             className={`hidden md:inline-block border-2 px-6 py-2 text-sm font-medium transition-all uppercase tracking-wide ${
               scrolled 
                 ? 'border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white'
-                : 'border-white text-white hover:bg-white hover:text-gray-900'
+                : 'border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white'
             }`}
           >
             Order
@@ -109,7 +108,7 @@ export default function Navbar() {
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden text-2xl transition-colors ${
-              scrolled ? 'text-gray-700' : 'text-white'
+              scrolled ? 'text-gray-700' : 'text-pink-600'
             }`}
           >
             {isOpen ? "✕" : "☰"}
@@ -121,31 +120,31 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-4 space-y-3 bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-lg">
             <button 
               onClick={() => handleSectionClick("home")}
-              className="block w-full text-left text-gray-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
             >
               Home
             </button>
             <button 
               onClick={() => handleSectionClick("products")}
-              className="block w-full text-left text-gray-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
             >
               Products
             </button>
             <button 
               onClick={() => handleSectionClick("about")}
-              className="block w-full text-left text-gray-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
             >
               About
             </button>
             <button 
               onClick={() => handleSectionClick("contact")}
-              className="block w-full text-left text-gray-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
             >
               Contact
             </button>
             <Link 
               to="/booking" 
-              className="block border-2 border-gray-800 text-gray-800 text-center px-6 py-2 font-medium uppercase text-sm"
+              className="block border-2 border-pink-600 text-pink-600 text-center px-6 py-2 font-medium uppercase text-sm"
               onClick={() => setIsOpen(false)}
             >
               Order

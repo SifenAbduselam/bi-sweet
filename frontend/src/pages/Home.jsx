@@ -12,15 +12,15 @@ export default function Home() {
       className="relative min-h-screen flex items-center bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
-      {/* Pink-tinted Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+      {/* Minimal Overlay - Just enough for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 text-left">
             
             {/* Animated Badge */}
             <div className="inline-flex items-center gap-2 bg-pink-100/50 backdrop-blur-md border border-pink-200 px-5 py-2 rounded-full animate-fade-in-down">
@@ -30,15 +30,15 @@ export default function Home() {
               </span>
             </div>
             
-            {/* Bold Animated Heading - Elegant Pink */}
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-gray-900 leading-tight animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            {/* Bold Animated Heading */}
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight animate-slide-up" style={{ animationDelay: '0.2s' }}>
               <span className="text-pink-600">Bi-Sweet</span>
               <br />
               <span className="text-5xl md:text-6xl lg:text-7xl italic text-gray-700">Deserts</span>
             </h1>
             
             {/* Animated Description */}
-            <p className="text-xl text-gray-600 max-w-lg leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl text-gray-700 max-w-lg leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
               {data.heroText}
             </p>
 
@@ -58,8 +58,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-
-          {/* Right Side - Empty for image space */}
         </div>
       </div>
 
