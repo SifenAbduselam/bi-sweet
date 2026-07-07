@@ -33,13 +33,13 @@ export default function Products() {
         
         {/* Section Header */}
         <div className="text-center mb-20 animate-fade-in-down">
-          <p className="text-pink-600 font-semibold uppercase tracking-widest mb-3 text-sm">
+          <p className="text-[#C9A9A6] font-semibold uppercase tracking-widest mb-3 text-sm">
             Our Menu
           </p>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-4">
             Delicious Desserts
           </h2>
-          <div className="w-24 h-1 bg-pink-500 mx-auto rounded-full mb-4" />
+          <div className="w-24 h-1 bg-[#C9A9A6] mx-auto rounded-full mb-4" />
           <p className="text-gray-700 mt-4 max-w-xl mx-auto text-lg">
             Handcrafted with love, made fresh to order
           </p>
@@ -71,14 +71,14 @@ export default function Products() {
                     
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="inline-block bg-white/95 backdrop-blur-sm text-pink-600 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg">
+                      <span className="inline-block bg-white/95 backdrop-blur-sm text-[#C9A9A6] text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg">
                         {product.category}
                       </span>
                     </div>
                     
                     {/* Price Badge */}
                     <div className="absolute top-4 right-4">
-                      <span className="inline-block bg-pink-500 text-white text-lg font-bold px-4 py-2 rounded-full shadow-lg">
+                      <span className="inline-block bg-[#C9A9A6] text-white text-lg font-bold px-4 py-2 rounded-full shadow-lg">
                         {product.price}
                       </span>
                     </div>
@@ -87,7 +87,7 @@ export default function Products() {
                   {/* Content */}
                   <div className="p-8">
                     {/* Product Name */}
-                    <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
+                    <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-[#C9A9A6] transition-colors">
                       {product.name}
                     </h3>
 
@@ -97,13 +97,13 @@ export default function Products() {
                     </p>
 
                     {/* Order Button */}
-                    <button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-4 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:scale-[1.02] uppercase tracking-wider">
+                    <button className="w-full bg-gradient-to-r from-[#D4B5B2] to-[#C9A9A6] hover:from-[#C9A9A6] hover:to-[#B79A9A] text-white py-4 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:scale-[1.02] uppercase tracking-wider">
                       Add to Order →
                     </button>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/40 to-transparent rounded-tr-3xl rounded-bl-full pointer-events-none"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#E5D0CC]/40 to-transparent rounded-tr-3xl rounded-bl-full pointer-events-none"></div>
                 </div>
               </div>
             );
@@ -117,7 +117,7 @@ export default function Products() {
           </p>
           <a 
             href="#contact"
-            className="inline-block bg-white border-2 border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white px-10 py-4 rounded-full font-semibold transition-all hover:scale-105 hover:shadow-xl uppercase tracking-wide text-sm"
+            className="inline-block bg-white border-2 border-[#C9A9A6] text-[#C9A9A6] hover:bg-[#C9A9A6] hover:text-white px-10 py-4 rounded-full font-semibold transition-all hover:scale-105 hover:shadow-xl uppercase tracking-wide text-sm"
           >
             Contact Us for Custom Orders
           </a>
