@@ -42,7 +42,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <span className={`text-2xl font-serif font-bold transition-colors ${
-              scrolled ? 'text-gray-800' : 'text-pink-600'
+              scrolled ? 'text-gray-800' : 'text-[#C9A9A6]'
             }`}>
               Bi-Sweet
             </span>
@@ -54,8 +54,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("home")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-pink-700 hover:text-pink-500'
+                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
+                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
               }`}
             >
               Home
@@ -64,8 +64,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("products")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-pink-700 hover:text-pink-500'
+                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
+                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
               }`}
             >
               Products
@@ -74,8 +74,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("about")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-pink-700 hover:text-pink-500'
+                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
+                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
               }`}
             >
               About
@@ -84,8 +84,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("contact")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-pink-600' 
-                  : 'text-pink-700 hover:text-pink-500'
+                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
+                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
               }`}
             >
               Contact
@@ -98,7 +98,7 @@ export default function Navbar() {
             className={`hidden md:inline-block border-2 px-6 py-2 text-sm font-medium transition-all uppercase tracking-wide ${
               scrolled 
                 ? 'border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white'
-                : 'border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white'
+                : 'border-[#C9A9A6] text-[#C9A9A6] hover:bg-[#C9A9A6] hover:text-white'
             }`}
           >
             Order
@@ -108,7 +108,7 @@ export default function Navbar() {
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden text-2xl transition-colors ${
-              scrolled ? 'text-gray-700' : 'text-pink-600'
+              scrolled ? 'text-gray-700' : 'text-[#C9A9A6]'
             }`}
           >
             {isOpen ? "✕" : "☰"}
@@ -120,31 +120,31 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-4 space-y-3 bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-lg">
             <button 
               onClick={() => handleSectionClick("home")}
-              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
             >
               Home
             </button>
             <button 
               onClick={() => handleSectionClick("products")}
-              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
             >
               Products
             </button>
             <button 
               onClick={() => handleSectionClick("about")}
-              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
             >
               About
             </button>
             <button 
               onClick={() => handleSectionClick("contact")}
-              className="block w-full text-left text-pink-700 hover:text-pink-600 font-medium uppercase text-sm"
+              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
             >
               Contact
             </button>
             <Link 
               to="/booking" 
-              className="block border-2 border-pink-600 text-pink-600 text-center px-6 py-2 font-medium uppercase text-sm"
+              className="block border-2 border-[#C9A9A6] text-[#C9A9A6] text-center px-6 py-2 font-medium uppercase text-sm"
               onClick={() => setIsOpen(false)}
             >
               Order
