@@ -54,10 +54,14 @@ export const businessPresets = {
     ],
 
     contact: {
-      phone: "+1 (555) 123-4567",
+      phone: "0982284291",
+      location: "Jimma",
       email: "hello@bisweetdeserts.com",
-      address: "123 Baker Street, Sweet Town",
       hours: "Mon-Sat: 9AM - 6PM",
+      tiktok: "https://www.tiktok.com/@__bi__sweet?is_from_webapp=1&sender_device=pc",
+      tiktokUsername: "__bi__sweet",
+      telegram: "https://t.me/Yb087",
+      telegramUsername: "Yb087",
     },
 
     about: {

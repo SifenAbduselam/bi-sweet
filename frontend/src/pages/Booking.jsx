@@ -21,7 +21,7 @@ export default function Booking() {
     e.preventDefault();
     setLoading(true);
 
-    console.log("Submitting booking:", form); // Debug log
+    console.log("Submitting booking:", form);
 
     try {
       const response = await fetch("http://localhost:3000/api/bookings", {
@@ -32,14 +32,14 @@ export default function Booking() {
         body: JSON.stringify(form),
       });
 
-      console.log("Response status:", response.status); // Debug log
+      console.log("Response status:", response.status);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log("Response data:", data); // Debug log
+      console.log("Response data:", data);
 
       if (data.success) {
         alert("Booking sent to backend!");
@@ -61,25 +61,25 @@ export default function Booking() {
   }
 
   return (
-    <div className="min-h-screen bg-pink-50 pt-28 pb-16 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#F5E0E3] to-[#E5C5CA] pt-28 pb-16 px-4">
       <div className="max-w-2xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-10">
-          <p className="text-pink-500 font-semibold uppercase tracking-wider mb-2">
+          <p className="text-[#8B4A5A] font-semibold uppercase tracking-wider mb-2">
             Place Your Order
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#723C4B] mb-4">
             Book a Dessert
           </h1>
-          <div className="w-20 h-1 bg-pink-500 mx-auto rounded-full mb-4" />
-          <p className="text-gray-600">
+          <div className="w-20 h-1 bg-[#8B4A5A] mx-auto rounded-full mb-4" />
+          <p className="text-gray-700">
             Fill out the form below and we'll prepare your order with love! 🍰
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
+        <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl">
           <form onSubmit={handleSubmit} className="space-y-5">
             
             <div>
@@ -91,7 +91,7 @@ export default function Booking() {
                 placeholder="Enter your full name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all"
+                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all"
                 required
               />
             </div>
@@ -104,16 +104,16 @@ export default function Booking() {
                 name="service"
                 value={form.service}
                 onChange={handleChange}
-                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all bg-white"
+                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all bg-white"
                 required
               >
                 <option value="">Choose a dessert</option>
-                <option value="Tiramisu Tray">Tiramisu Tray</option>
-                <option value="Strawberry Tres Leches">Strawberry Tres Leches</option>
-                <option value="Lotus Biscoff Pudding">Lotus Biscoff Pudding</option>
-                <option value="Chocolate Lava Cake">Chocolate Lava Cake</option>
-                <option value="Mango Cheesecake">Mango Cheesecake</option>
-                <option value="Mixed Dessert Box">Mixed Dessert Box</option>
+                <option value="White Coconut">White Coconut</option>
+                <option value="Black Strawberry">Black Strawberry</option>
+                <option value="Kinder Biscoff">Kinder Biscoff</option>
+                <option value="Oreo">Oreo</option>
+                <option value="White Strawberry">White Strawberry</option>
+                <option value="Lotus Biscoff">Lotus Biscoff</option>
               </select>
             </div>
 
@@ -127,7 +127,7 @@ export default function Booking() {
                   name="date"
                   value={form.date}
                   onChange={handleChange}
-                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all"
+                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all"
                   required
                 />
               </div>
@@ -141,7 +141,7 @@ export default function Booking() {
                   name="time"
                   value={form.time}
                   onChange={handleChange}
-                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-all"
+                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all"
                   required
                 />
               </div>
@@ -150,7 +150,7 @@ export default function Booking() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-pink-500 hover:bg-pink-600 text-white py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-md hover:shadow-lg mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#8B4A5A] hover:bg-[#723C4B] text-white py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Submitting..." : "Confirm Booking 🍰"}
             </button>
@@ -159,8 +159,8 @@ export default function Booking() {
 
         {/* Info Note */}
         <div className="mt-8 text-center">
-          <p className="text-gray-500 text-sm">
-            📞 Need help? Call us at <span className="font-semibold text-pink-500">+1 (555) 123-4567</span>
+          <p className="text-gray-700 text-sm">
+            📞 Need help? Call us at <span className="font-semibold text-[#8B4A5A]">0982284291</span>
           </p>
         </div>
       </div>

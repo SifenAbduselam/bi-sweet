@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,12 +41,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className={`text-2xl font-serif font-bold transition-colors ${
-              scrolled ? 'text-gray-800' : 'text-[#C9A9A6]'
-            }`}>
-              Bi-Sweet
-            </span>
+          <Link to="/" className="flex items-center" onClick={() => window.scrollTo(0, 0)}>
+            <img 
+              src={logo} 
+              alt="Bi-Sweet Logo" 
+              className="h-14 md:h-16 lg:h-20 w-auto object-contain" 
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -54,8 +55,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("home")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
-                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
+                  ? 'text-gray-700 hover:text-[#8B4A5A]' 
+                  : 'text-[#723C4B] hover:text-[#8B4A5A]'
               }`}
             >
               Home
@@ -64,8 +65,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("products")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
-                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
+                  ? 'text-gray-700 hover:text-[#8B4A5A]' 
+                  : 'text-[#723C4B] hover:text-[#8B4A5A]'
               }`}
             >
               Products
@@ -74,8 +75,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("about")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
-                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
+                  ? 'text-gray-700 hover:text-[#8B4A5A]' 
+                  : 'text-[#723C4B] hover:text-[#8B4A5A]'
               }`}
             >
               About
@@ -84,8 +85,8 @@ export default function Navbar() {
               onClick={() => handleSectionClick("contact")}
               className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                 scrolled 
-                  ? 'text-gray-700 hover:text-[#C9A9A6]' 
-                  : 'text-[#B79A9A] hover:text-[#C9A9A6]'
+                  ? 'text-gray-700 hover:text-[#8B4A5A]' 
+                  : 'text-[#723C4B] hover:text-[#8B4A5A]'
               }`}
             >
               Contact
@@ -95,10 +96,11 @@ export default function Navbar() {
           {/* Order Button */}
           <Link 
             to="/booking" 
-            className={`hidden md:inline-block border-2 px-6 py-2 text-sm font-medium transition-all uppercase tracking-wide ${
+            onClick={() => window.scrollTo(0, 0)}
+            className={`hidden md:inline-block border-2 px-6 py-2.5 text-sm font-medium transition-all uppercase tracking-wide ${
               scrolled 
-                ? 'border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white'
-                : 'border-[#C9A9A6] text-[#C9A9A6] hover:bg-[#C9A9A6] hover:text-white'
+                ? 'border-[#8B4A5A] text-[#8B4A5A] hover:bg-[#8B4A5A] hover:text-white'
+                : 'border-[#8B4A5A] text-[#8B4A5A] hover:bg-[#8B4A5A] hover:text-white'
             }`}
           >
             Order
@@ -108,7 +110,7 @@ export default function Navbar() {
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden text-2xl transition-colors ${
-              scrolled ? 'text-gray-700' : 'text-[#C9A9A6]'
+              scrolled ? 'text-gray-700' : 'text-[#8B4A5A]'
             }`}
           >
             {isOpen ? "✕" : "☰"}
@@ -120,32 +122,35 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-4 space-y-3 bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-lg">
             <button 
               onClick={() => handleSectionClick("home")}
-              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
+              className="block w-full text-left text-[#723C4B] hover:text-[#8B4A5A] font-medium uppercase text-sm"
             >
               Home
             </button>
             <button 
               onClick={() => handleSectionClick("products")}
-              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
+              className="block w-full text-left text-[#723C4B] hover:text-[#8B4A5A] font-medium uppercase text-sm"
             >
               Products
             </button>
             <button 
               onClick={() => handleSectionClick("about")}
-              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
+              className="block w-full text-left text-[#723C4B] hover:text-[#8B4A5A] font-medium uppercase text-sm"
             >
               About
             </button>
             <button 
               onClick={() => handleSectionClick("contact")}
-              className="block w-full text-left text-[#B79A9A] hover:text-[#C9A9A6] font-medium uppercase text-sm"
+              className="block w-full text-left text-[#723C4B] hover:text-[#8B4A5A] font-medium uppercase text-sm"
             >
               Contact
             </button>
             <Link 
               to="/booking" 
-              className="block border-2 border-[#C9A9A6] text-[#C9A9A6] text-center px-6 py-2 font-medium uppercase text-sm"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                setIsOpen(false);
+              }}
+              className="block border-2 border-[#8B4A5A] text-[#8B4A5A] text-center px-6 py-2.5 font-medium uppercase text-sm"
             >
               Order
             </Link>

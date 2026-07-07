@@ -11,44 +11,61 @@ export default function Contact() {
       className="relative py-24 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
-      {/* Transparent Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         
-        {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-down">
-          <p className="text-[#C9A9A6] font-semibold uppercase tracking-widest mb-3 text-sm">
+          <p className="text-[#8B4A5A] font-semibold uppercase tracking-widest mb-3 text-sm">
             Get in Touch
           </p>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-4">
             Contact Us
           </h2>
-          <div className="w-24 h-1 bg-[#C9A9A6] mx-auto rounded-full mb-4" />
-          <p className="text-gray-700 text-lg">
+          <div className="w-24 h-1 bg-[#8B4A5A] mx-auto rounded-full mb-4" />
+          <p className="text-gray-800 text-lg font-medium">
             We'd love to hear from you!
           </p>
         </div>
 
-        {/* Contact Info - Clean & Simple */}
         <div className="max-w-2xl mx-auto">
           <div className="grid grid-cols-1 gap-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             
             {/* Phone */}
             <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/50">
               <div className="flex items-center gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#C9A9A6] to-[#B79A9A] rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#8B4A5A] to-[#723C4B] rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-[#C9A9A6] uppercase tracking-wider mb-1">
+                  <h3 className="text-sm font-bold text-[#8B4A5A] uppercase tracking-wider mb-1">
                     Call Us
                   </h3>
-                  <a href={`tel:${contact.phone}`} className="text-2xl font-serif font-bold text-gray-900 hover:text-[#C9A9A6] transition-colors">
-                    {contact.phone}
+                  <a href="tel:0982284291" className="text-2xl font-serif font-bold text-gray-900 hover:text-[#8B4A5A] transition-colors">
+                    📞 0982284291
                   </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/50">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#8B4A5A] to-[#723C4B] rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-[#8B4A5A] uppercase tracking-wider mb-1">
+                    Location
+                  </h3>
+                  <p className="text-2xl font-serif font-bold text-gray-900">
+                    📍 Jimma
+                  </p>
                 </div>
               </div>
             </div>
@@ -62,11 +79,11 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-[#C9A9A6] uppercase tracking-wider mb-1">
+                  <h3 className="text-sm font-bold text-[#8B4A5A] uppercase tracking-wider mb-1">
                     Follow on TikTok
                   </h3>
-                  <a href={contact.tiktok} target="_blank" rel="noopener noreferrer" className="text-2xl font-serif font-bold text-gray-900 hover:text-[#C9A9A6] transition-colors">
-                    @{contact.tiktokUsername}
+                  <a href="https://www.tiktok.com/@__bi__sweet?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-xl font-serif font-bold text-gray-900 hover:text-[#8B4A5A] transition-colors">
+                    @__bi__sweet
                   </a>
                 </div>
               </div>
@@ -81,11 +98,11 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-[#C9A9A6] uppercase tracking-wider mb-1">
+                  <h3 className="text-sm font-bold text-[#8B4A5A] uppercase tracking-wider mb-1">
                     Message on Telegram
                   </h3>
-                  <a href={contact.telegram} target="_blank" rel="noopener noreferrer" className="text-2xl font-serif font-bold text-gray-900 hover:text-[#C9A9A6] transition-colors">
-                    @{contact.telegramUsername}
+                  <a href="https://t.me/Yb087" target="_blank" rel="noopener noreferrer" className="text-2xl font-serif font-bold text-gray-900 hover:text-[#8B4A5A] transition-colors">
+                    @Yb087
                   </a>
                 </div>
               </div>
