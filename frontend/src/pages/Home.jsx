@@ -23,16 +23,16 @@ export default function Home() {
           <div className="space-y-8 text-left">
             
             {/* Animated Badge */}
-            <div className="inline-flex items-center gap-2 bg-pink-100/50 backdrop-blur-md border border-pink-200 px-5 py-2 rounded-full animate-fade-in-down">
-              <span className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
-              <span className="text-pink-700 text-xs font-bold uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 bg-[#F5E8E6]/50 backdrop-blur-md border border-[#E5D0CC] px-5 py-2 rounded-full animate-fade-in-down">
+              <span className="w-2 h-2 bg-[#C9A9A6] rounded-full animate-pulse"></span>
+              <span className="text-[#B79A9A] text-xs font-bold uppercase tracking-widest">
                 {data.heroSubtitle}
               </span>
             </div>
             
             {/* Bold Animated Heading */}
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <span className="text-pink-600">Bi-Sweet</span>
+              <span className="text-[#C9A9A6]">Bi-Sweet</span>
               <br />
               <span className="text-5xl md:text-6xl lg:text-7xl italic text-gray-700">Deserts</span>
             </h1>
@@ -46,13 +46,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
               <Link 
                 to="/booking"
-                className="inline-block bg-pink-600 text-white hover:bg-pink-700 px-10 py-4 text-sm font-bold transition-all uppercase tracking-wider hover:scale-105 hover:shadow-xl text-center"
+                className="inline-block bg-[#C9A9A6] text-white hover:bg-[#B79A9A] px-10 py-4 text-sm font-bold transition-all uppercase tracking-wider hover:scale-105 hover:shadow-xl text-center"
               >
                 Order Now →
               </Link>
               <a 
                 href="#products"
-                className="inline-block bg-white border-2 border-pink-300 text-pink-600 hover:bg-pink-50 px-10 py-4 text-sm font-bold transition-all uppercase tracking-wider text-center"
+                className="inline-block bg-white border-2 border-[#E5D0CC] text-[#C9A9A6] hover:bg-[#F5E8E6] px-10 py-4 text-sm font-bold transition-all uppercase tracking-wider text-center"
               >
                 View Products
               </a>
