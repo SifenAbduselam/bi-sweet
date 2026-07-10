@@ -1,6 +1,6 @@
 // src/components/About.jsx
 import { businessPresets } from "../data/businessPresets";
-
+import dessertImage from "../assets/about-dessert.png";
 export default function About() {
   const { about } = businessPresets.bakery;
 
@@ -25,14 +25,16 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Left Side - Image Placeholder */}
-            <div className="relative">
-              <div className="aspect-[4/5] bg-[#723C4B] rounded-2xl overflow-hidden shadow-xl border border-white/10 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-7xl mb-4">👩🍳</div>
-                  <p className="text-white/80 font-serif italic text-xl">Your Photo or Video Here</p>
-                </div>
-              </div>
-            </div>
+           {/* Left Side - Image */}
+<div className="relative">
+  <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl border border-white/10">
+    <img 
+      src={dessertImage} 
+      alt="Artisan dessert preparation" 
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
 
             {/* Right Side - Content */}
             <div className="text-white">

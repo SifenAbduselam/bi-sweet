@@ -108,22 +108,7 @@ export default function Products() {
           </div>
 
           {/* Custom Orders CTA */}
-          <div className="text-center mt-16">
-            <div className="inline-block bg-[#723C4B] rounded-2xl p-8 md:p-10 border border-white/10">
-              <p className="text-white/90 text-xl md:text-2xl font-serif italic mb-6">
-                Looking for something special?
-              </p>
-              <p className="text-white/70 text-sm mb-8 max-w-md mx-auto">
-                We create custom desserts for birthdays, weddings, and special occasions. Let's bring your vision to life!
-              </p>
-              <a 
-                href="#contact"
-                className="inline-block bg-white text-[#8B4A5A] hover:bg-[#F5E0E3] px-12 py-4 text-sm font-bold uppercase tracking-wider transition-all hover:shadow-2xl hover:scale-105 rounded-full"
-              >
-                Request Custom Order
-              </a>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
