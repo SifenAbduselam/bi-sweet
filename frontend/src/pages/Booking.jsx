@@ -21,8 +21,6 @@ export default function Booking() {
     e.preventDefault();
     setLoading(true);
 
-    console.log("Submitting booking:", form);
-
     try {
       const response = await fetch("http://localhost:3000/api/bookings", {
         method: "POST",
@@ -32,14 +30,11 @@ export default function Booking() {
         body: JSON.stringify(form),
       });
 
-      console.log("Response status:", response.status);
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log("Response data:", data);
 
       if (data.success) {
         alert("Booking sent to backend!");
@@ -61,29 +56,35 @@ export default function Booking() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5E0E3] to-[#E5C5CA] pt-28 pb-16 px-4">
+    <section className="min-h-screen bg-gradient-to-br from-[#FFFBF7] via-[#FFF5F1] to-[#FFE8E0] py-32 px-4">
       <div className="max-w-2xl mx-auto">
         
         {/* Header */}
-        <div className="text-center mb-10">
-          <p className="text-[#8B4A5A] font-semibold uppercase tracking-wider mb-2">
-            Place Your Order
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#723C4B] mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 mb-6">
+            <span className="w-10 h-px bg-[#8B4A5A]/40" />
+            <p className="text-[#8B4A5A] text-xs font-medium uppercase tracking-[0.3em]">
+              Place Your Order
+            </p>
+            <span className="w-10 h-px bg-[#8B4A5A]/40" />
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-4">
             Book a Dessert
           </h1>
-          <div className="w-20 h-1 bg-[#8B4A5A] mx-auto rounded-full mb-4" />
-          <p className="text-gray-700">
-            Fill out the form below and we'll prepare your order with love! 🍰
+          
+          <p className="text-gray-600 font-light">
+            Fill out the form below and we'll prepare your order with love
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl">
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="bg-white rounded-sm shadow-sm p-10 md:p-12">
+          <form onSubmit={handleSubmit} className="space-y-8">
             
+            {/* Name Field */}
             <div>
-              <label className="block text-gray-700 font-semibold mb-2 text-sm">
+              <label className="block text-gray-700 text-sm font-medium uppercase tracking-wider mb-3">
                 Your Name
               </label>
               <input
@@ -91,23 +92,24 @@ export default function Booking() {
                 placeholder="Enter your full name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all"
+                className="w-full px-0 py-4 border-b border-gray-300 focus:border-[#8B4A5A] bg-transparent focus:outline-none transition-colors text-gray-900 placeholder:text-gray-400"
                 required
               />
             </div>
 
+            {/* Service Field */}
             <div>
-              <label className="block text-gray-700 font-semibold mb-2 text-sm">
+              <label className="block text-gray-700 text-sm font-medium uppercase tracking-wider mb-3">
                 Select Dessert
               </label>
               <select
                 name="service"
                 value={form.service}
                 onChange={handleChange}
-                className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all bg-white"
+                className="w-full px-0 py-4 border-b border-gray-300 focus:border-[#8B4A5A] bg-transparent focus:outline-none transition-colors text-gray-900"
                 required
               >
-                <option value="">Choose a dessert</option>
+                <option value="" className="text-gray-400">Choose a dessert</option>
                 <option value="White Coconut">White Coconut</option>
                 <option value="Black Strawberry">Black Strawberry</option>
                 <option value="Kinder Biscoff">Kinder Biscoff</option>
@@ -117,9 +119,10 @@ export default function Booking() {
               </select>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Date & Time Fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                <label className="block text-gray-700 text-sm font-medium uppercase tracking-wider mb-3">
                   Pickup Date
                 </label>
                 <input
@@ -127,13 +130,13 @@ export default function Booking() {
                   name="date"
                   value={form.date}
                   onChange={handleChange}
-                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all"
+                  className="w-full px-0 py-4 border-b border-gray-300 focus:border-[#8B4A5A] bg-transparent focus:outline-none transition-colors text-gray-900"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                <label className="block text-gray-700 text-sm font-medium uppercase tracking-wider mb-3">
                   Pickup Time
                 </label>
                 <input
@@ -141,29 +144,32 @@ export default function Booking() {
                   name="time"
                   value={form.time}
                   onChange={handleChange}
-                  className="w-full px-5 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#8B4A5A] focus:ring-2 focus:ring-[#D4A3A3] transition-all"
+                  className="w-full px-0 py-4 border-b border-gray-300 focus:border-[#8B4A5A] bg-transparent focus:outline-none transition-colors text-gray-900"
                   required
                 />
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#8B4A5A] hover:bg-[#723C4B] text-white py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? "Submitting..." : "Confirm Booking 🍰"}
-            </button>
+            {/* Submit Button */}
+            <div className="pt-6">
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#8B4A5A] hover:bg-[#723C4B] text-white py-4 text-sm font-medium uppercase tracking-[0.2em] transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? "Submitting..." : "Confirm Booking"}
+              </button>
+            </div>
           </form>
         </div>
 
-        {/* Info Note */}
-        <div className="mt-8 text-center">
-          <p className="text-gray-700 text-sm">
-            📞 Need help? Call us at <span className="font-semibold text-[#8B4A5A]">0982284291</span>
+        {/* Contact Info */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-600 font-light text-sm">
+            📞 Need help? Call us at <span className="text-[#8B4A5A] font-medium">0982284291</span>
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

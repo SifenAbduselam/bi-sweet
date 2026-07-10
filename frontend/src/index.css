@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,8 +11,8 @@ html {
 
 body {
   font-family: 'Lato', sans-serif;
-  background-color: #FFFBF7;
-  color: #2D2D2D;
+  background-color: #8B4A5A; /* <-- CHANGED TO BURGUNDY */
+  color: #ffffff; /* <-- CHANGED TO WHITE TEXT */
 }
 
 /* Elegant Headings */
@@ -28,15 +28,15 @@ h1, h2, h3, h4, h5, h6 {
   background: #FFFBF7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B76E79; /* Dusty Rose - More Visible */
+  background: #D4A3A3;
   border-radius: 10px;
 }
 
-/* Beautiful Animations */
+/* Animations */
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -55,16 +55,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-/* Animation Classes */
 .animate-fade-in-down {
   animation: fadeInDown 1s ease-out forwards;
 }
@@ -72,8 +62,4 @@ h1, h2, h3, h4, h5, h6 {
 .animate-slide-up {
   opacity: 0;
   animation: slideUp 1s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
 }

@@ -33,9 +33,7 @@ export default function Home() {
           </h1>
           
           {/* Animated Description */}
-          <p className="text-xl text-gray-800 max-w-2xl mx-auto leading-relaxed mb-10 animate-slide-up drop-shadow-sm" style={{ animationDelay: '0.4s' }}>
-            {data.heroText}
-          </p>
+         
 
           {/* Animated Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>

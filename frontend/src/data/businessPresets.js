@@ -12,44 +12,56 @@ export const businessPresets = {
       { 
         id: 1,
         name: "White Coconut", 
-        price: "$22", 
         description: "Creamy coconut dessert topped with shredded coconut flakes",
-        category: "Classic"
+        sizes: {
+          small: { label: "Small", price: "250 Br" },
+          large: { label: "Large", price: "350 Br" }
+        }
       },
       { 
         id: 2,
         name: "Black Strawberry", 
-        price: "$28", 
         description: "Rich chocolate base with fresh strawberries and cream",
-        category: "Premium"
+        sizes: {
+          small: { label: "Small", price: "300 Br" },
+          large: { label: "Large", price: "450 Br" }
+        }
       },
       { 
         id: 3,
         name: "Kinder Biscoff", 
-        price: "$25", 
         description: "Lotus biscoff cookies layered with creamy custard",
-        category: "Signature"
+        sizes: {
+          small: { label: "Small", price: "280 Br" },
+          large: { label: "Large", price: "400 Br" }
+        }
       },
       { 
         id: 4,
         name: "Oreo", 
-        price: "$24", 
         description: "Classic Oreo cookies with caramel drizzle and cream",
-        category: "Classic"
+        sizes: {
+          small: { label: "Small", price: "250 Br" },
+          large: { label: "Large", price: "380 Br" }
+        }
       },
       { 
         id: 5,
         name: "White Strawberry", 
-        price: "$28", 
         description: "Delicate white cream with fresh strawberry layers",
-        category: "Premium"
+        sizes: {
+          small: { label: "Small", price: "300 Br" },
+          large: { label: "Large", price: "450 Br" }
+        }
       },
       { 
         id: 6,
         name: "Lotus Biscoff", 
-        price: "$25", 
         description: "Crushed biscoff cookies with caramel and cream layers",
-        category: "Signature"
+        sizes: {
+          small: { label: "Small", price: "280 Br" },
+          large: { label: "Large", price: "400 Br" }
+        }
       },
     ],
 

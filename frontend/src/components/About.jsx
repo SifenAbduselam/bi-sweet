@@ -1,42 +1,48 @@
 // src/components/About.jsx
 import { businessPresets } from "../data/businessPresets";
-import heroBg from "../assets/hero-bg.jpg";
 
 export default function About() {
   const { about } = businessPresets.bakery;
 
   return (
-    <section 
-      id="about" 
-      className="relative py-24 bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url(${heroBg})` }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
+    // my-16 creates the top/bottom gap to show the background image!
+    <section id="about" className="w-full my-16 md:my-24 px-0">
       
-      <div className="relative z-10 max-w-4xl mx-auto px-4">
+      {/* SOLID BURGUNDY CARD */}
+      <div className="w-full bg-[#8B4A5A] shadow-2xl py-16 md:py-20">
         
-        <div className="text-center mb-12 animate-fade-in-down">
-          <p className="text-[#8B4A5A] font-semibold uppercase tracking-widest mb-3 text-sm">
-            About Us
-          </p>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-4">
-            {about.title}
-          </h2>
-          <div className="w-24 h-1 bg-[#8B4A5A] mx-auto rounded-full" />
-        </div>
-
-        <div className="text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <p className="text-gray-800 text-xl font-medium leading-relaxed mb-8 max-w-3xl mx-auto">
-            {about.text}
-          </p>
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <div className="mt-12 p-8 bg-white/70 backdrop-blur-md rounded-3xl border border-white/50 shadow-lg max-w-2xl mx-auto">
-            <p className="text-2xl font-serif italic text-gray-800 mb-4">
-              "Every dessert tells a story of passion, tradition, and the joy of sharing sweetness with those we love."
-            </p>
-            <p className="text-[#8B4A5A] font-bold uppercase tracking-wider text-sm">
-              — Bi-Sweet Deserts
-            </p>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="w-10 h-px bg-white/40" />
+              <p className="text-white/80 text-xs font-medium uppercase tracking-[0.3em]">About Us</p>
+              <span className="w-10 h-px bg-white/40" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-white mb-3">{about.title}</h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Side - Image Placeholder */}
+            <div className="relative">
+              <div className="aspect-[4/5] bg-[#723C4B] rounded-2xl overflow-hidden shadow-xl border border-white/10 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="text-7xl mb-4">👩🍳</div>
+                  <p className="text-white/80 font-serif italic text-xl">Your Photo or Video Here</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Content */}
+            <div className="text-white">
+              <p className="text-lg leading-relaxed font-light text-white/90 mb-8">{about.text}</p>
+              <blockquote className="bg-[#723C4B] border-l-4 border-white/40 pl-6 py-4 my-8 rounded-r-lg">
+                <p className="text-xl italic text-white font-serif leading-relaxed">"Every dessert tells a story of passion, tradition, and the joy of sharing sweetness with those we love."</p>
+                <footer className="text-white/80 text-sm mt-4 font-medium uppercase tracking-wider">— Bi-Sweet Deserts</footer>
+              </blockquote>
+              <p className="text-white/90 leading-relaxed font-light">We believe in using only the finest ingredients, sourced locally whenever possible. Each creation is a labor of love, designed to bring moments of pure delight to your table.</p>
+            </div>
           </div>
         </div>
       </div>

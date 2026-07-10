@@ -1,15 +1,23 @@
 // src/components/Footer.jsx
-import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // Import your logo
+import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Footer() {
-  
-  // Helper function to scroll to top when clicking footer links
-  const handleFooterLinkClick = (e, sectionId) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    // If you want to navigate to home first, uncomment the line below:
-    // window.location.href = `/#${sectionId}`;
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  // Exact same logic as Navbar
+  const handleSectionClick = (sectionId) => {
+    if (isHome) {
+      // If already on home page, smoothly scroll to the section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If on another page, navigate to home and then to the section
+      window.location.href = `/#${sectionId}`;
+    }
   };
 
   return (
@@ -31,34 +39,30 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-            <a 
-              href="#home" 
-              onClick={(e) => handleFooterLinkClick(e, 'home')}
+            <button 
+              onClick={() => handleSectionClick("home")}
               className="text-white hover:text-[#F5E0E3] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Home
-            </a>
-            <a 
-              href="#products" 
-              onClick={(e) => handleFooterLinkClick(e, 'products')}
+            </button>
+            <button 
+              onClick={() => handleSectionClick("products")}
               className="text-white hover:text-[#F5E0E3] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Products
-            </a>
-            <a 
-              href="#about" 
-              onClick={(e) => handleFooterLinkClick(e, 'about')}
+            </button>
+            <button 
+              onClick={() => handleSectionClick("about")}
               className="text-white hover:text-[#F5E0E3] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               About
-            </a>
-            <a 
-              href="#contact" 
-              onClick={(e) => handleFooterLinkClick(e, 'contact')}
+            </button>
+            <button 
+              onClick={() => handleSectionClick("contact")}
               className="text-white hover:text-[#F5E0E3] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Contact
-            </a>
+            </button>
           </div>
 
           {/* Social Icons */}
