@@ -21,11 +21,11 @@ export const businessPresets = {
         sizes: {
           small: {
             label: "Small",
-            price: 250,
+            price: 600,
           },
           large: {
             label: "Large",
-            price: 350,
+            price: 700,
           },
         },
       },
@@ -40,11 +40,11 @@ export const businessPresets = {
         sizes: {
           small: {
             label: "Small",
-            price: 300,
+            price: 600,
           },
           large: {
             label: "Large",
-            price: 450,
+            price: 700,
           },
         },
       },
@@ -59,11 +59,11 @@ export const businessPresets = {
         sizes: {
           small: {
             label: "Small",
-            price: 280,
+            price: 600,
           },
           large: {
             label: "Large",
-            price: 400,
+            price: 700,
           },
         },
       },
@@ -78,11 +78,11 @@ export const businessPresets = {
         sizes: {
           small: {
             label: "Small",
-            price: 250,
+            price: 600,
           },
           large: {
             label: "Large",
-            price: 380,
+            price: 700,
           },
         },
       },
@@ -97,11 +97,11 @@ export const businessPresets = {
         sizes: {
           small: {
             label: "Small",
-            price: 300,
+            price: 600,
           },
           large: {
             label: "Large",
-            price: 450,
+            price: 700,
           },
         },
       },
@@ -116,11 +116,11 @@ export const businessPresets = {
         sizes: {
           small: {
             label: "Small",
-            price: 280,
+            price: 600,
           },
           large: {
             label: "Large",
-            price: 400,
+            price: 700,
           },
         },
       },
