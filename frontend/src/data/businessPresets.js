@@ -15,144 +15,114 @@ export const businessPresets = {
         id: 1,
         slug: "white-coconut",
         name: "White Coconut",
-        category: "Dessert",
-        available: true,
-
         description:
           "Creamy coconut dessert topped with shredded coconut flakes",
 
-        sizes: [
-          {
-            id: "small",
+        sizes: {
+          small: {
             label: "Small",
             price: 250,
           },
-          {
-            id: "large",
+          large: {
             label: "Large",
             price: 350,
           },
-        ],
+        },
       },
 
       {
         id: 2,
         slug: "black-strawberry",
         name: "Black Strawberry",
-        category: "Dessert",
-        available: true,
-
         description:
           "Rich chocolate base with fresh strawberries and cream",
 
-        sizes: [
-          {
-            id: "small",
+        sizes: {
+          small: {
             label: "Small",
             price: 300,
           },
-          {
-            id: "large",
+          large: {
             label: "Large",
             price: 450,
           },
-        ],
+        },
       },
 
       {
         id: 3,
         slug: "kinder-biscoff",
         name: "Kinder Biscoff",
-        category: "Dessert",
-        available: true,
-
         description:
           "Lotus biscoff cookies layered with creamy custard",
 
-        sizes: [
-          {
-            id: "small",
+        sizes: {
+          small: {
             label: "Small",
             price: 280,
           },
-          {
-            id: "large",
+          large: {
             label: "Large",
             price: 400,
           },
-        ],
+        },
       },
 
       {
         id: 4,
         slug: "oreo",
         name: "Oreo",
-        category: "Dessert",
-        available: true,
-
         description:
           "Classic Oreo cookies with caramel drizzle and cream",
 
-        sizes: [
-          {
-            id: "small",
+        sizes: {
+          small: {
             label: "Small",
             price: 250,
           },
-          {
-            id: "large",
+          large: {
             label: "Large",
             price: 380,
           },
-        ],
+        },
       },
 
       {
         id: 5,
         slug: "white-strawberry",
         name: "White Strawberry",
-        category: "Dessert",
-        available: true,
-
         description:
           "Delicate white cream with fresh strawberry layers",
 
-        sizes: [
-          {
-            id: "small",
+        sizes: {
+          small: {
             label: "Small",
             price: 300,
           },
-          {
-            id: "large",
+          large: {
             label: "Large",
             price: 450,
           },
-        ],
+        },
       },
 
       {
         id: 6,
         slug: "lotus-biscoff",
         name: "Lotus Biscoff",
-        category: "Dessert",
-        available: true,
-
         description:
           "Crushed biscoff cookies with caramel and cream layers",
 
-        sizes: [
-          {
-            id: "small",
+        sizes: {
+          small: {
             label: "Small",
             price: 280,
           },
-          {
-            id: "large",
+          large: {
             label: "Large",
             price: 400,
           },
-        ],
+        },
       },
     ],
 
@@ -175,7 +145,6 @@ export const businessPresets = {
 
     about: {
       title: "Our Story",
-
       text:
         "Bi-Sweet Deserts started as a small home kitchen passion project. Today, we continue to create handcrafted desserts using traditional recipes and premium ingredients. Every dessert is made fresh to order with love.",
     },
