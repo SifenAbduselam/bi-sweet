@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../api/api";
 
-
 export default function Admin() {
 
   const [bookings, setBookings] = useState([]);
@@ -10,7 +9,6 @@ export default function Admin() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-
 
 
   useEffect(() => {
@@ -24,9 +22,7 @@ export default function Admin() {
 
     fetchBookings();
 
-  }, [navigate]);
-
-
+  }, []);
 
 
 
@@ -35,32 +31,20 @@ export default function Admin() {
     try{
 
       setLoading(true);
-      setError(null);
-
 
       const data = await api.getBookings();
 
-
       if(Array.isArray(data)){
-
         setBookings(data);
-
       }
       else{
-
-        setError(data.error || "Failed to load bookings");
-
+        setError(data.error);
       }
 
-
     }
-    catch(error){
+    catch(err){
 
-      console.error(error);
-
-      setError(
-        "Cannot connect to server"
-      );
+      setError("Failed to load bookings");
 
     }
     finally{
@@ -74,9 +58,6 @@ export default function Admin() {
 
 
 
-
-
-
   async function updateStatus(id,status){
 
     try{
@@ -86,11 +67,9 @@ export default function Admin() {
       fetchBookings();
 
     }
-    catch(error){
+    catch(err){
 
-      console.error(error);
-
-      alert("Failed to update status");
+      alert("Update failed");
 
     }
 
@@ -99,16 +78,9 @@ export default function Admin() {
 
 
 
-
-
   async function deleteBooking(id){
 
-    const confirmDelete = window.confirm(
-      "Delete this booking?"
-    );
-
-
-    if(!confirmDelete) return;
+    if(!window.confirm("Delete booking?")) return;
 
 
     try{
@@ -118,16 +90,13 @@ export default function Admin() {
       fetchBookings();
 
     }
-    catch(error){
+    catch(err){
 
-      console.error(error);
-
-      alert("Failed to delete booking");
+      alert("Delete failed");
 
     }
 
   }
-
 
 
 
@@ -145,80 +114,19 @@ export default function Admin() {
 
 
 
-
-
-
   if(loading){
 
-    return(
+    return (
 
-      <div className="min-h-screen flex items-center justify-center bg-[#F5E0E3]">
+      <div className="min-h-screen flex items-center justify-center">
 
-        <div className="text-center">
-
-          <div className="text-5xl animate-spin">
-            🍰
-          </div>
-
-          <p className="mt-4 text-[#8B4A5A] font-semibold">
-            Loading bookings...
-          </p>
-
-        </div>
+        Loading 🍰
 
       </div>
 
     );
 
   }
-
-
-
-
-
-
-
-  if(error){
-
-    return(
-
-      <div className="min-h-screen flex items-center justify-center bg-[#F5E0E3]">
-
-        <div className="bg-white p-8 rounded-xl shadow-xl text-center">
-
-          <h2 className="text-2xl font-bold text-[#8B4A5A]">
-            Error
-          </h2>
-
-
-          <p className="my-4 text-gray-600">
-            {error}
-          </p>
-
-
-          <button
-
-          onClick={()=>navigate("/admin/login")}
-
-          className="bg-[#8B4A5A] text-white px-6 py-3 rounded-lg"
-
-          >
-
-            Login
-
-          </button>
-
-
-        </div>
-
-      </div>
-
-    );
-
-  }
-
-
-
 
 
 
@@ -226,32 +134,27 @@ export default function Admin() {
 
   return (
 
-<div className="min-h-screen bg-gradient-to-br from-[#F5E0E3] to-[#E5C5CA]">
+<div className="min-h-screen bg-[#F5E0E3]">
 
 
 
 {/* HEADER */}
 
-<div className="bg-[#8B4A5A] text-white p-6 shadow-lg">
-
+<div className="bg-[#8B4A5A] text-white p-5">
 
 <div className="max-w-7xl mx-auto flex justify-between items-center">
 
-
 <div>
 
-<h1 className="text-3xl font-bold">
+<h1 className="text-2xl font-bold">
 Admin Dashboard
 </h1>
 
-
-<p className="text-white/70">
-Bi-Sweet Desserts Management
+<p className="text-sm opacity-70">
+Bi-Sweet Desserts
 </p>
 
-
 </div>
-
 
 
 
@@ -259,7 +162,7 @@ Bi-Sweet Desserts Management
 
 onClick={logout}
 
-className="bg-white text-[#8B4A5A] px-6 py-2 rounded-full font-semibold"
+className="bg-white text-[#8B4A5A] px-4 py-2 rounded-lg text-sm font-semibold"
 
 >
 
@@ -268,36 +171,32 @@ Logout
 </button>
 
 
+</div>
 
 </div>
 
 
-</div>
 
 
 
 
 
-
-
-<div className="max-w-7xl mx-auto p-6">
-
-
+<div className="max-w-7xl mx-auto p-5">
 
 
 
 {/* STATS */}
 
-<div className="grid md:grid-cols-4 gap-5 mb-8">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
 
 
-<div className="bg-white rounded-xl shadow p-5">
+<div className="bg-white p-4 rounded-xl shadow">
 
-<p className="text-gray-500">
+<p className="text-gray-500 text-sm">
 Total
 </p>
 
-<h2 className="text-3xl font-bold text-[#8B4A5A]">
+<h2 className="text-2xl font-bold text-[#8B4A5A]">
 {bookings.length}
 </h2>
 
@@ -306,14 +205,13 @@ Total
 
 
 
+<div className="bg-white p-4 rounded-xl shadow">
 
-<div className="bg-white rounded-xl shadow p-5">
-
-<p className="text-gray-500">
+<p className="text-gray-500 text-sm">
 Pending
 </p>
 
-<h2 className="text-3xl font-bold text-yellow-600">
+<h2 className="text-2xl font-bold text-yellow-600">
 
 {
 bookings.filter(
@@ -328,15 +226,13 @@ b=>b.status==="Pending"
 
 
 
+<div className="bg-white p-4 rounded-xl shadow">
 
-<div className="bg-white rounded-xl shadow p-5">
-
-<p className="text-gray-500">
+<p className="text-gray-500 text-sm">
 Confirmed
 </p>
 
-
-<h2 className="text-3xl font-bold text-green-600">
+<h2 className="text-2xl font-bold text-green-600">
 
 {
 bookings.filter(
@@ -351,15 +247,13 @@ b=>b.status==="Confirmed"
 
 
 
+<div className="bg-white p-4 rounded-xl shadow">
 
-<div className="bg-white rounded-xl shadow p-5">
-
-<p className="text-gray-500">
+<p className="text-gray-500 text-sm">
 Completed
 </p>
 
-
-<h2 className="text-3xl font-bold text-blue-600">
+<h2 className="text-2xl font-bold text-blue-600">
 
 {
 bookings.filter(
@@ -369,7 +263,6 @@ b=>b.status==="Completed"
 
 </h2>
 
-
 </div>
 
 
@@ -381,47 +274,9 @@ b=>b.status==="Completed"
 
 
 
+{/* BOOKING CARDS */}
 
-
-{/* BOOKINGS LIST */}
-
-
-<div className="bg-white rounded-xl shadow overflow-hidden">
-
-
-<div className="p-6 border-b">
-
-<h2 className="text-2xl font-bold text-[#8B4A5A]">
-
-All Bookings
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-{
-
-bookings.length===0 ?
-
-
-<div className="p-10 text-center text-gray-500">
-
-No bookings yet 🍰
-
-</div>
-
-
-
-:
-
-
-<div className="divide-y">
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
 
 {
@@ -433,25 +288,17 @@ bookings.map((b)=>(
 
 key={b.id}
 
-className="p-6 hover:bg-gray-50"
+className="bg-white rounded-xl shadow-md p-5 hover:shadow-xl transition"
 
 >
 
 
 
-<div className="flex flex-col lg:flex-row justify-between gap-6">
+
+<div className="flex justify-between items-start mb-3">
 
 
-
-
-
-<div>
-
-
-<div className="flex items-center gap-3">
-
-
-<h3 className="text-xl font-bold">
+<h3 className="font-bold text-lg">
 
 {b.customer_name}
 
@@ -459,10 +306,9 @@ className="p-6 hover:bg-gray-50"
 
 
 
-
 <span
 
-className={`px-3 py-1 rounded-full text-xs font-semibold
+className={`text-xs px-2 py-1 rounded-full font-semibold
 
 ${
 b.status==="Confirmed"
@@ -502,28 +348,39 @@ b.status==="Cancelled"
 
 
 
-<div className="mt-4 space-y-1 text-gray-600">
 
 
-<p>📞 {b.phone_number}</p>
-
-<p>🍰 {b.dessert}</p>
-
-<p>📏 Size: {b.size}</p>
-
-<p>🔢 Quantity: {b.quantity}</p>
-
-<p>📅 {b.pickup_date}</p>
-
-<p>⏰ {b.pickup_time}</p>
+<div className="text-sm text-gray-600 space-y-1">
 
 
-{
-b.telegram_username &&
 <p>
-💬 {b.telegram_username}
+📞 {b.phone_number}
 </p>
-}
+
+
+<p>
+🍰 {b.dessert}
+</p>
+
+
+<p>
+📏 {b.size}
+</p>
+
+
+<p>
+🔢 Qty: {b.quantity}
+</p>
+
+
+<p>
+📅 {b.pickup_date}
+</p>
+
+
+<p>
+⏰ {b.pickup_time}
+</p>
 
 
 
@@ -540,23 +397,18 @@ b.notes &&
 
 
 
-</div>
 
 
 
 
-
-
-
-
-<div className="flex flex-wrap gap-2">
+<div className="flex gap-2 mt-5 flex-wrap">
 
 
 <button
 
 onClick={()=>updateStatus(b.id,"Confirmed")}
 
-className="bg-green-500 text-white px-4 py-2 rounded-lg"
+className="text-xs bg-green-500 text-white px-3 py-2 rounded-md"
 
 >
 
@@ -567,11 +419,12 @@ Confirm
 
 
 
+
 <button
 
 onClick={()=>updateStatus(b.id,"Completed")}
 
-className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+className="text-xs bg-blue-500 text-white px-3 py-2 rounded-md"
 
 >
 
@@ -582,11 +435,12 @@ Done
 
 
 
+
 <button
 
 onClick={()=>updateStatus(b.id,"Cancelled")}
 
-className="bg-red-500 text-white px-4 py-2 rounded-lg"
+className="text-xs bg-red-500 text-white px-3 py-2 rounded-md"
 
 >
 
@@ -597,11 +451,12 @@ Cancel
 
 
 
+
 <button
 
 onClick={()=>deleteBooking(b.id)}
 
-className="bg-[#8B4A5A] text-white px-4 py-2 rounded-lg"
+className="text-xs bg-[#8B4A5A] text-white px-3 py-2 rounded-md"
 
 >
 
@@ -615,11 +470,6 @@ Delete
 
 
 
-
-
-</div>
-
-
 </div>
 
 
@@ -629,14 +479,8 @@ Delete
 }
 
 
-</div>
-
-
-}
-
 
 </div>
-
 
 
 
@@ -646,6 +490,7 @@ Delete
 
 
 </div>
+
 
   );
 
