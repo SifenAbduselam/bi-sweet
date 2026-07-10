@@ -33,10 +33,81 @@ export default function Booking() {
 
 
 
+  // FORM VALIDATION
+  function validateForm() {
+
+    const name = form.customer_name.trim();
+
+    if (name.length < 3) {
+      alert("Please enter a valid name");
+      return false;
+    }
+
+
+    if (!/^09\d{8}$/.test(form.phone_number)) {
+      alert("Please enter a valid Ethiopian phone number (09xxxxxxxx)");
+      return false;
+    }
+
+
+    if (!form.dessert) {
+      alert("Please select a dessert");
+      return false;
+    }
+
+
+    if (!form.size) {
+      alert("Please select a size");
+      return false;
+    }
+
+
+    if (!form.pickup_date) {
+      alert("Please select pickup date");
+      return false;
+    }
+
+
+    const today = new Date();
+    const selectedDate = new Date(form.pickup_date);
+
+    today.setHours(0,0,0,0);
+
+
+    if (selectedDate < today) {
+      alert("Pickup date cannot be in the past");
+      return false;
+    }
+
+
+    if (!form.pickup_time) {
+      alert("Please select pickup time");
+      return false;
+    }
+
+
+    if (Number(form.quantity) < 1) {
+      alert("Quantity must be at least 1");
+      return false;
+    }
+
+
+    return true;
+
+  }
+
+
+
 
   async function handleSubmit(e) {
 
     e.preventDefault();
+
+
+    if (!validateForm()) {
+      return;
+    }
+
 
     setLoading(true);
 
@@ -44,7 +115,7 @@ export default function Booking() {
     try {
 
       const response = await fetch(
-        "http://localhost:3000/api/bookings",
+        "https://bi-sweet-backend.onrender.com/api/bookings",
         {
           method: "POST",
 
@@ -111,12 +182,6 @@ export default function Booking() {
 
 
 
-  const selectedDessert = products.find(
-    (p)=> p.name === form.dessert
-  );
-
-
-
   return (
 
 <section className="min-h-screen bg-gradient-to-br from-[#FFFBF7] via-[#FFF5F1] to-[#FFE8E0] py-32 px-4">
@@ -124,8 +189,6 @@ export default function Booking() {
 
 <div className="max-w-2xl mx-auto">
 
-
-{/* Header */}
 
 <div className="text-center mb-16">
 
@@ -170,10 +233,6 @@ className="space-y-8"
 >
 
 
-
-
-{/* Name */}
-
 <div>
 
 <label className="block text-gray-700 text-sm uppercase mb-3">
@@ -204,8 +263,6 @@ required
 
 
 
-{/* Phone */}
-
 <div>
 
 <label className="block text-gray-700 text-sm uppercase mb-3">
@@ -215,6 +272,8 @@ Phone Number
 
 <input
 
+type="tel"
+
 name="phone_number"
 
 value={form.phone_number}
@@ -222,6 +281,8 @@ value={form.phone_number}
 onChange={handleChange}
 
 placeholder="09xxxxxxxx"
+
+maxLength="10"
 
 className="w-full px-0 py-4 border-b border-gray-300 focus:outline-none focus:border-[#8B4A5A]"
 
@@ -234,10 +295,6 @@ required
 
 
 
-
-
-
-{/* Dessert */}
 
 <div>
 
@@ -291,10 +348,6 @@ value={product.name}
 
 
 
-
-
-{/* Size */}
-
 <div>
 
 <label className="block text-gray-700 text-sm uppercase mb-3">
@@ -343,9 +396,6 @@ Large
 
 
 
-
-{/* Quantity */}
-
 <div>
 
 <label className="block text-gray-700 text-sm uppercase mb-3">
@@ -389,9 +439,6 @@ className="w-full py-4 border-b border-gray-300 bg-transparent"
 
 
 
-
-{/* Date and Time */}
-
 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
 
@@ -407,6 +454,8 @@ Pickup Date
 type="date"
 
 name="pickup_date"
+
+min={new Date().toISOString().split("T")[0]}
 
 value={form.pickup_date}
 
@@ -460,9 +509,6 @@ required
 
 
 
-
-{/* Telegram */}
-
 <div>
 
 <label className="block text-gray-700 text-sm uppercase mb-3">
@@ -492,10 +538,6 @@ className="w-full py-4 border-b border-gray-300"
 
 
 
-
-
-
-{/* Notes */}
 
 <div>
 
@@ -533,7 +575,7 @@ className="w-full border border-gray-300 p-3"
 
 disabled={loading}
 
-className="w-full bg-[#8B4A5A] hover:bg-[#723C4B] text-white py-4 uppercase tracking-widest"
+className="w-full bg-[#8B4A5A] hover:bg-[#723C4B] text-white py-4 uppercase tracking-widest disabled:opacity-50"
 
 >
 
