@@ -5,7 +5,9 @@ export default function Booking() {
 
   const { products } = businessPresets.bakery;
 
+
   const [form, setForm] = useState({
+
     customer_name: "",
     phone_number: "",
     dessert: "",
@@ -15,81 +17,115 @@ export default function Booking() {
     pickup_time: "",
     telegram_username: "",
     notes: "",
+
   });
+
 
 
   const [loading, setLoading] = useState(false);
 
 
 
-  function handleChange(e) {
+  function handleChange(e){
 
     setForm({
+
       ...form,
       [e.target.name]: e.target.value,
+
     });
 
   }
 
 
 
-  // FORM VALIDATION
-  function validateForm() {
+  // CHECK ORDERING HOURS
+  function isOrderingOpen(){
+
+    const now = new Date();
+
+    const currentHour = now.getHours();
+
+
+    const openingHour = 8; 
+    const closingHour = 16;
+
+
+    return currentHour >= openingHour && currentHour < closingHour;
+
+  }
+
+
+
+
+
+  function validateForm(){
 
     const name = form.customer_name.trim();
 
-    if (name.length < 3) {
-      alert("Please enter a valid name");
+
+    if(name.length < 3){
+
+      alert("Please enter a valid name / እባክዎ ትክክለኛ ስም ያስገቡ");
+
       return false;
+
     }
 
 
-    if (!/^09\d{8}$/.test(form.phone_number)) {
-      alert("Please enter a valid Ethiopian phone number (09xxxxxxxx)");
+
+    if(!/^09\d{8}$/.test(form.phone_number)){
+
+
+      alert(
+        "Please enter Ethiopian phone number (09xxxxxxxx)"
+      );
+
+
       return false;
+
     }
 
 
-    if (!form.dessert) {
-      alert("Please select a dessert");
+
+    if(!form.dessert){
+
+      alert("Please select dessert / እባክዎ ጣፋጭ ምግብ ይምረጡ");
+
       return false;
+
     }
 
 
-    if (!form.size) {
-      alert("Please select a size");
+
+    if(!form.size){
+
+      alert("Please select size");
+
       return false;
+
     }
 
 
-    if (!form.pickup_date) {
-      alert("Please select pickup date");
+
+    if(!form.pickup_date){
+
+      alert("Please select delivery date");
+
       return false;
+
     }
 
 
-    const today = new Date();
-    const selectedDate = new Date(form.pickup_date);
 
-    today.setHours(0,0,0,0);
+    if(!form.pickup_time){
 
+      alert("Please select preferred delivery time");
 
-    if (selectedDate < today) {
-      alert("Pickup date cannot be in the past");
       return false;
+
     }
 
-
-    if (!form.pickup_time) {
-      alert("Please select pickup time");
-      return false;
-    }
-
-
-    if (Number(form.quantity) < 1) {
-      alert("Quantity must be at least 1");
-      return false;
-    }
 
 
     return true;
@@ -99,90 +135,132 @@ export default function Booking() {
 
 
 
-  async function handleSubmit(e) {
+
+  async function handleSubmit(e){
 
     e.preventDefault();
 
 
-    if (!validateForm()) {
+
+    if(!isOrderingOpen()){
+
+
+      alert(
+        "Orders are closed now. Please order between 8:00 AM - 4:00 PM.\n\n" +
+        "ትዕዛዝ የሚቀበለው ከጠዋቱ 8:00 - ከሰዓቱ 4:00 ብቻ ነው።"
+      );
+
+
       return;
+
     }
+
+
+
+    if(!validateForm()){
+
+      return;
+
+    }
+
 
 
     setLoading(true);
 
 
-    try {
+
+    try{
+
 
       const response = await fetch(
-        "https://bi-sweet-backend.onrender.com/api/bookings",
-        {
-          method: "POST",
 
-          headers: {
-            "Content-Type": "application/json",
+        "https://bi-sweet-backend.onrender.com/api/bookings",
+
+        {
+
+          method:"POST",
+
+          headers:{
+
+            "Content-Type":"application/json",
+
           },
 
-          body: JSON.stringify(form),
+
+          body:JSON.stringify(form),
+
         }
+
       );
+
 
 
       const data = await response.json();
 
 
 
+
       if(data.success){
 
-        alert("Booking submitted successfully 🍰");
+
+        alert(
+          "Booking submitted successfully 🍰\nትዕዛዝዎ ተልኳል"
+        );
+
 
 
         setForm({
-          customer_name: "",
-          phone_number: "",
-          dessert: "",
-          size: "",
-          quantity: "1",
-          pickup_date: "",
-          pickup_time: "",
-          telegram_username: "",
-          notes: "",
+
+          customer_name:"",
+          phone_number:"",
+          dessert:"",
+          size:"",
+          quantity:"1",
+          pickup_date:"",
+          pickup_time:"",
+          telegram_username:"",
+          notes:"",
+
         });
 
-      }
-      else{
+
+
+      }else{
+
 
         alert(
           "Booking failed: " + data.error
         );
 
+
       }
 
 
 
-    }
-    catch(error){
+    }catch(error){
+
 
       console.error(error);
 
+
       alert(
-        "Something went wrong. Try again."
+        "Something went wrong. Please try again."
       );
 
-    }
-    finally{
+
+    }finally{
+
 
       setLoading(false);
 
+
     }
+
 
   }
 
 
-
-
-
-  return (
+    return (
 
 <section className="min-h-screen bg-gradient-to-br from-[#FFFBF7] via-[#FFF5F1] to-[#FFE8E0] py-32 px-4">
 
@@ -190,34 +268,110 @@ export default function Booking() {
 <div className="max-w-2xl mx-auto">
 
 
-<div className="text-center mb-16">
+
+<div className="text-center mb-12">
+
+
+<div className="bg-[#8B4A5A]/10 border border-[#8B4A5A]/20 p-6 rounded-sm mb-10">
+
+
+<h2 className="text-2xl md:text-3xl font-bold text-[#8B4A5A] mb-3">
+
+🍰 ORDERING HOURS  
+<br/>
+
+የትዕዛዝ መቀበያ ሰዓት
+
+</h2>
+
+
+
+<p className="text-gray-700 text-lg font-medium">
+
+Orders are accepted from:
+
+<br/>
+
+<span className="font-bold">
+
+8:00 AM - 4:00 PM
+
+</span>
+
+
+</p>
+
+
+
+<p className="text-gray-600 mt-3">
+
+ትዕዛዝ የሚቀበለው:
+
+<br/>
+
+<span className="font-bold">
+
+ከጠዋቱ 8:00 - ከሰዓቱ 4:00
+
+</span>
+
+
+</p>
+
+
+</div>
+
+
+
 
 
 <div className="inline-flex items-center gap-2 mb-6">
 
 <span className="w-10 h-px bg-[#8B4A5A]/40"/>
 
+
 <p className="text-[#8B4A5A] text-xs uppercase tracking-[0.3em]">
+
 Place Your Order
+
 </p>
+
 
 <span className="w-10 h-px bg-[#8B4A5A]/40"/>
 
+
 </div>
+
+
 
 
 
 <h1 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-4">
+
 Book a Dessert
+
+<br/>
+
+ጣፋጭ ምግብ ይዘዙ
+
 </h1>
 
 
+
 <p className="text-gray-600 font-light">
-Fill out the form and we will prepare your order with love
+
+Fill out the form and we will prepare your order with love.
+
+<br/>
+
+ቅጹን ይሙሉ እና ትዕዛዝዎን በፍቅር እናዘጋጃለን።
+
 </p>
 
 
+
 </div>
+
 
 
 
@@ -233,11 +387,16 @@ className="space-y-8"
 >
 
 
+
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Your Name
+
+Your Name / ስምዎ
+
 </label>
+
 
 
 <input
@@ -248,13 +407,12 @@ value={form.customer_name}
 
 onChange={handleChange}
 
-placeholder="Enter your name"
+placeholder="Enter your name / ስምዎን ያስገቡ"
 
 className="w-full px-0 py-4 border-b border-gray-300 focus:outline-none focus:border-[#8B4A5A]"
 
-required
-
 />
+
 
 </div>
 
@@ -263,11 +421,16 @@ required
 
 
 
+
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Phone Number
+
+Phone Number / ስልክ ቁጥር
+
 </label>
+
 
 
 <input
@@ -286,9 +449,8 @@ maxLength="10"
 
 className="w-full px-0 py-4 border-b border-gray-300 focus:outline-none focus:border-[#8B4A5A]"
 
-required
-
 />
+
 
 </div>
 
@@ -296,11 +458,16 @@ required
 
 
 
+
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Choose Dessert
+
+Choose Dessert / ጣፋጭ ምግብ ይምረጡ
+
 </label>
+
 
 
 <select
@@ -313,33 +480,35 @@ onChange={handleChange}
 
 className="w-full py-4 border-b border-gray-300 bg-transparent"
 
-required
-
 >
 
 
 <option value="">
+
 Select dessert
+
 </option>
 
 
+
 {
+
 products.map(product=>(
 
-<option 
-key={product.id}
-value={product.name}
->
+<option key={product.id} value={product.name}>
 
 {product.name}
 
 </option>
 
 ))
+
 }
 
 
+
 </select>
+
 
 </div>
 
@@ -348,11 +517,16 @@ value={product.name}
 
 
 
+
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Choose Size
+
+Size / መጠን
+
 </label>
+
 
 
 <select
@@ -365,23 +539,27 @@ onChange={handleChange}
 
 className="w-full py-4 border-b border-gray-300 bg-transparent"
 
-required
-
 >
 
 
 <option value="">
+
 Select size
+
 </option>
 
 
 <option value="Small">
-Small
+
+Small / ትንሽ
+
 </option>
 
 
 <option value="Large">
-Large
+
+Large / ትልቅ
+
 </option>
 
 
@@ -398,8 +576,11 @@ Large
 
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Quantity
+
+Quantity / ብዛት
+
 </label>
 
 
@@ -417,13 +598,17 @@ className="w-full py-4 border-b border-gray-300 bg-transparent"
 
 
 {
+
 [1,2,3,4,5].map(num=>(
 
 <option key={num} value={num}>
+
 {num}
+
 </option>
 
 ))
+
 }
 
 
@@ -437,16 +622,19 @@ className="w-full py-4 border-b border-gray-300 bg-transparent"
 
 
 
-
-
 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
 
 
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Pickup Date
+
+Delivery Date / የማድረሻ ቀን
+
 </label>
+
 
 
 <input
@@ -455,15 +643,11 @@ type="date"
 
 name="pickup_date"
 
-min={new Date().toISOString().split("T")[0]}
-
 value={form.pickup_date}
 
 onChange={handleChange}
 
 className="w-full py-4 border-b border-gray-300"
-
-required
 
 />
 
@@ -474,11 +658,16 @@ required
 
 
 
+
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Pickup Time
+
+Preferred Time / የሚመችዎ ሰዓት
+
 </label>
+
 
 
 <input
@@ -493,8 +682,6 @@ onChange={handleChange}
 
 className="w-full py-4 border-b border-gray-300"
 
-required
-
 />
 
 
@@ -511,9 +698,13 @@ required
 
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
+
 Telegram Username (Optional)
+
 </label>
+
 
 
 <input
@@ -541,9 +732,13 @@ className="w-full py-4 border-b border-gray-300"
 
 <div>
 
+
 <label className="block text-gray-700 text-sm uppercase mb-3">
-Notes (Optional)
+
+Notes / ተጨማሪ መረጃ
+
 </label>
+
 
 
 <textarea
@@ -581,15 +776,22 @@ className="w-full bg-[#8B4A5A] hover:bg-[#723C4B] text-white py-4 uppercase trac
 
 
 {
-loading 
-? "Submitting..."
-: "Confirm Booking"
+
+loading
+
+?
+
+"Submitting..."
+
+:
+
+"Confirm Booking / ትዕዛዝ ያረጋግጡ"
+
 }
 
 
+
 </button>
-
-
 
 
 
@@ -600,13 +802,11 @@ loading
 </div>
 
 
-
-
-
 </div>
 
 
 </section>
+
 
   );
 
