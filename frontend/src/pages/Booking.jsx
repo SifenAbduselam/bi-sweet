@@ -46,7 +46,8 @@ export default function Booking() {
 
     const currentHour = now.getHours();
 
-
+ console.log("Current Date:", now);
+  console.log("Current Hour:", currentHour);
     const openingHour = 8; 
     const closingHour = 16;
 
