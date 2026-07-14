@@ -11,7 +11,7 @@ import lotusBiscoff from "../assets/lotus-biscoff.jpg";
 const productImages = {
   "White Coconut": whiteCoconut,
   "Black Strawberry": blackStrawberry,
-  "Kinder Biscoff": kinder, // 👈 FIXED: Use the imported variable 'kinder' here
+  "Kinder kinder": kinder, // 👈 FIXED: Use the imported variable 'kinder' here
   "Oreo": oreo,
   "White Strawberry": whiteStrawberry,
   "Lotus Biscoff": lotusBiscoff,
