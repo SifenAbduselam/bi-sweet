@@ -3,7 +3,7 @@ import { businessPresets } from "../data/businessPresets";
 import heroBg from "../assets/hero-bg.jpg";
 import whiteCoconut from "../assets/white-coconut.jpg";
 import blackStrawberry from "../assets/black-strawberry.jpg";
-import kinder from "../assets/kinder.jpg"; // Imported as 'kinder'
+import kinder from "../assets/kinder.jpg"; 
 import oreo from "../assets/oreo.jpg";
 import whiteStrawberry from "../assets/white-strawberry.jpg";
 import lotusBiscoff from "../assets/lotus-biscoff.jpg";
@@ -11,7 +11,7 @@ import lotusBiscoff from "../assets/lotus-biscoff.jpg";
 const productImages = {
   "White Coconut": whiteCoconut,
   "Black Strawberry": blackStrawberry,
-  "Kinder kinder": kinder, // 👈 FIXED: Use the imported variable 'kinder' here
+  "Kinder": kinder, // 👈 FIXED: Exact match to the name in businessPresets.js
   "Oreo": oreo,
   "White Strawberry": whiteStrawberry,
   "Lotus Biscoff": lotusBiscoff,
@@ -40,7 +40,6 @@ export default function Products() {
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => {
-              // This will now correctly find "Kinder Biscoff" and use the 'kinder' image
               const productImage = productImages[product.name] || heroBg;
               
               return (
@@ -92,8 +91,23 @@ export default function Products() {
           </div>
 
           {/* Custom Orders CTA */}
-          
-        
+          <div className="text-center mt-16">
+            <div className="inline-block bg-white rounded-2xl p-8 md:p-10 border border-gray-100 shadow-lg">
+              <p className="text-gray-900 text-xl md:text-2xl font-serif italic mb-6">
+                Looking for something special?
+              </p>
+              <p className="text-gray-600 text-sm mb-8 max-w-md mx-auto">
+                We create custom desserts for birthdays, weddings, and special occasions. Let's bring your vision to life!
+              </p>
+              <a 
+                href="#contact"
+                className="inline-block bg-[#8B4A5A] text-white hover:bg-[#723C4B] px-12 py-4 text-sm font-bold uppercase tracking-wider transition-all hover:shadow-xl hover:scale-105 rounded-full"
+              >
+                Request Custom Order
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
