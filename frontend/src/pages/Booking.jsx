@@ -147,7 +147,7 @@ export default function Booking() {
 
       alert(
         "Orders are closed now. Please order between 8:00 AM - 4:00 PM.\n\n" +
-        "ትዕዛዝ የሚቀበለው ከጠዋቱ 8:00 - ከሰዓቱ 4:00 ብቻ ነው።"
+        "ትዕዛዝ የሚቀበለው ከጠዋቱ 2:00 - ከሰዓቱ 10:00 ብቻ ነው።"
       );
 
 
