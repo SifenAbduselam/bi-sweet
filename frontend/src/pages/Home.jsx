@@ -54,10 +54,7 @@ export default function Home() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <span className="text-gray-600 text-sm uppercase tracking-widest block mb-2 drop-shadow-sm">Scroll</span>
-        <div className="w-0.5 h-10 bg-[#8B4A5A] rounded-full mx-auto"></div>
-      </div>
+      
     </section>
   );
 }
