@@ -3,7 +3,7 @@ import { businessPresets } from "../data/businessPresets";
 import heroBg from "../assets/hero-bg.jpg";
 import whiteCoconut from "../assets/white-coconut.jpg";
 import blackStrawberry from "../assets/black-strawberry.jpg";
-import kinderBiscoff from "../assets/kinder-biscoff.jpg";
+import kinder from "../assets/kinder.jpg"; // Imported as 'kinder'
 import oreo from "../assets/oreo.jpg";
 import whiteStrawberry from "../assets/white-strawberry.jpg";
 import lotusBiscoff from "../assets/lotus-biscoff.jpg";
@@ -11,7 +11,7 @@ import lotusBiscoff from "../assets/lotus-biscoff.jpg";
 const productImages = {
   "White Coconut": whiteCoconut,
   "Black Strawberry": blackStrawberry,
-  "Kinder Biscoff": kinderBiscoff,
+  "Kinder Biscoff": kinder, // 👈 FIXED: Use the imported variable 'kinder' here
   "Oreo": oreo,
   "White Strawberry": whiteStrawberry,
   "Lotus Biscoff": lotusBiscoff,
@@ -40,6 +40,7 @@ export default function Products() {
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => {
+              // This will now correctly find "Kinder Biscoff" and use the 'kinder' image
               const productImage = productImages[product.name] || heroBg;
               
               return (

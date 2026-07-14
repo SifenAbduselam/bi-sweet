@@ -51,8 +51,8 @@ export const businessPresets = {
 
       {
         id: 3,
-        slug: "kinder-biscoff",
-        name: "Kinder Biscoff",
+        slug: "kinder",
+        name: "Kinder",
         description:
           "Lotus biscoff cookies layered with creamy custard",
 
