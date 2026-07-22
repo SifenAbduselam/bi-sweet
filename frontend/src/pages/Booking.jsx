@@ -126,12 +126,12 @@ export default function Booking() {
             <p className="text-gray-700 text-lg font-medium">
               Orders are accepted from:
               <br />
-              <span className="font-bold">8:00 AM - 4:00 PM</span>
+              <span className="font-bold">7:00 AM - 7:00 PM</span>
             </p>
             <p className="text-gray-600 mt-3">
               ትዕዛዝ :
               <br />
-              <span className="font-bold">ከጠዋቱ 2:00 - ከሰዓቱ 10:00</span>
+              <span className="font-bold">ከጠዋቱ 1:00 - ምሽቱ 1:00</span>
             </p>
           </div>
 

@@ -1,16 +1,36 @@
 // src/pages/Home.jsx
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { businessPresets } from "../data/businessPresets";
-import heroBg from "../assets/hero-bg.jpg";
+import heroDesktop from "../assets/hero-bg.jpg";
+import heroMobile from "../assets/hero-mobile.jpg";
 
 export default function Home() {
   const data = businessPresets.bakery;
+  const [heroImage, setHeroImage] = useState(heroDesktop);
 
+useEffect(() => {
+  const updateImage = () => {
+    setHeroImage(
+      window.innerWidth < 768
+        ? heroMobile
+        : heroDesktop
+    );
+  };
+
+  updateImage();
+
+  window.addEventListener("resize", updateImage);
+
+  return () =>
+    window.removeEventListener("resize", updateImage);
+}, []);
+  
   return (
     <section 
       id="home"
-      className="relative min-h-screen flex items-center bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url(${heroBg})` }}
+      className="relative min-h-screen flex items-center bg-cover bg-[35%_center] md:bg-center bg-fixed"
+      style={{ backgroundImage: `url(${heroImage})` }}
     >
       {/* Minimal Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
